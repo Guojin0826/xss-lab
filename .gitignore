@@ -1,0 +1,32 @@
+# 数据文件
+data/*.txt
+*.txt
+!docs/*.txt
+
+# 配置文件
+config.php
+
+# IDE配置
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# 系统文件
+Thumbs.db
+Desktop.ini
+
+# 临时文件
+*.tmp
+*.log
+*.bak
+*.swp
+*~
+
+# PHP相关
+composer.phar
+vendor/
+
+# 其他
+-p/
+.feisuan/
