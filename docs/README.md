@@ -17,6 +17,33 @@
 
 这是一个完整的XSS（跨站脚本攻击）漏洞演示靶场，用于安全教学和演示。项目模拟了真实的技术论坛场景，包含多种XSS攻击方式的演示，帮助学习者理解XSS漏洞的原理和危害。
 
+### 📸 项目截图
+
+<table>
+<tr>
+<td align="center"><b>演示入口页面</b></td>
+<td align="center"><b>论坛主页面</b></td>
+</tr>
+<tr>
+<td><img src="../img/demo1.png" alt="演示入口" width="400"/></td>
+<td><img src="../img/forum.png" alt="论坛页面" width="400"/></td>
+</tr>
+<tr>
+<td align="center"><b>钓鱼登录页面</b></td>
+<td align="center"><b>凭据查看页面</b></td>
+</tr>
+<tr>
+<td><img src="../img/login.png" alt="钓鱼页面" width="400"/></td>
+<td><img src="../img/view_credentials.png" alt="凭据查看" width="400"/></td>
+</tr>
+<tr>
+<td align="center" colspan="2"><b>Cookie查看页面</b></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><img src="../img/view_cookies.png" alt="Cookie查看" width="400"/></td>
+</tr>
+</table>
+
 ### 演示场景
 
 1. **🎣 钓鱼攻击** - 通过XSS注入恶意代码，将用户重定向到伪造的登录页面，窃取用户凭据
@@ -120,6 +147,28 @@ chmod 777 xss-demo/data/  # 确保数据目录可写
 ```
 http://xss-demo.local/demo.php
 ```
+
+### 📸 演示截图
+
+#### 演示入口页面
+![演示入口页面](../img/demo1.png)
+*演示入口页面，展示完整的攻击流程说明*
+
+#### 论坛主页面
+![论坛主页面](../img/forum.png)
+*拟真的技术论坛页面，包含XSS漏洞*
+
+#### 钓鱼登录页面
+![钓鱼登录页面](../img/login.png)
+*伪造的登录页面，用于窃取用户凭据*
+
+#### 凭据查看页面
+![凭据查看页面](../img/view_credentials.png)
+*查看窃取的用户账号密码*
+
+#### Cookie查看页面
+![Cookie查看页面](../img/view_cookies.png)
+*查看窃取的用户Cookie信息*
 
 ## 🎮 使用指南
 

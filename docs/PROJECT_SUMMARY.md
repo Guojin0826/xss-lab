@@ -1,5 +1,18 @@
 # 🎯 XSS Lab - 项目总结
 
+## 📸 项目展示
+
+<table>
+<tr>
+<td align="center"><img src="../img/demo1.png" width="300"/><br/><b>演示入口</b></td>
+<td align="center"><img src="../img/forum.png" width="300"/><br/><b>论坛页面</b></td>
+</tr>
+<tr>
+<td align="center"><img src="../img/login.png" width="300"/><br/><b>钓鱼页面</b></td>
+<td align="center"><img src="../img/view_credentials.png" width="300"/><br/><b>凭据查看</b></td>
+</tr>
+</table>
+
 ## 📊 项目概览
 
 **项目名称：** XSS Lab - XSS漏洞演示靶场  
