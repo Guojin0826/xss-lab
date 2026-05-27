@@ -247,36 +247,6 @@
             <!-- 存在漏洞的论坛 -->
             <div class="demo-card">
                 <div class="card-header">
-                    <span class="card-icon">💬</span>
-                    <span class="card-title">存在漏洞的论坛</span>
-                </div>
-                <p class="card-desc">一个拟真的技术论坛页面，存在存储型XSS漏洞，攻击者可以在评论区注入恶意代码。</p>
-                <div class="card-features">
-                    <div class="feature-item">存储型XSS漏洞</div>
-                    <div class="feature-item">反射型XSS漏洞</div>
-                    <div class="feature-item">拟真业务场景</div>
-                </div>
-                <a href="forum.php" class="btn-demo">访问论坛</a>
-            </div>
-
-            <!-- 伪造登录页面 -->
-            <div class="demo-card">
-                <div class="card-header">
-                    <span class="card-icon">🔐</span>
-                    <span class="card-title">伪造登录页面</span>
-                </div>
-                <p class="card-desc">高度仿真的论坛登录页面，用于诱骗用户输入用户名和密码。</p>
-                <div class="card-features">
-                    <div class="feature-item">完美复刻真实页面</div>
-                    <div class="feature-item">自动跳转回原页面</div>
-                    <div class="feature-item">凭据自动保存</div>
-                </div>
-                <a href="phishing/login.html" class="btn-demo">查看钓鱼页面</a>
-            </div>
-
-            <!-- XSS防御演示 -->
-            <div class="demo-card">
-                <div class="card-header">
                     <span class="card-icon">🛡️</span>
                     <span class="card-title">XSS防御演示</span>
                 </div>
@@ -285,37 +255,7 @@
                     <a href="defense_demo.php" class="btn-demo">进入演示</a>
                 </div>
             </div>
-
-            <!-- 凭据查看器 -->
-            <div class="demo-card">
-                <div class="card-header">
-                    <span class="card-icon">📊</span>
-                    <span class="card-title">凭据查看器</span>
-                </div>
-                <p class="card-desc">查看所有被窃取的用户凭据，包括用户名、密码、IP地址等信息。</p>
-                <div class="card-features">
-                    <div class="feature-item">实时更新数据</div>
-                    <div class="feature-item">显示详细信息</div>
-                    <div class="feature-item">支持清空数据</div>
-                </div>
-                <a href="view_credentials.php" class="btn-demo btn-danger">查看凭据</a>
-            </div>
-
-            <!-- Cookie查看器 -->
-            <div class="demo-card">
-                <div class="card-header">
-                    <span class="card-icon">🍪</span>
-                    <span class="card-title">Cookie查看器</span>
-                </div>
-                <p class="card-desc">查看所有被窃取的用户Cookie，包括Session ID、用户信息等敏感数据。</p>
-                <div class="card-features">
-                    <div class="feature-item">实时捕获Cookie</div>
-                    <div class="feature-item">显示完整Cookie内容</div>
-                    <div class="feature-item">支持清空数据</div>
-                </div>
-                <a href="view_cookies.php" class="btn-demo btn-danger">查看Cookie</a>
-            </div>
-
+            
             <!-- 一键清理功能 -->
             <div class="demo-card">
                 <div class="card-header">
@@ -334,12 +274,71 @@
                             <span class="btn-text">清空凭据数据</span>
                         </button>
                         <button onclick="clearCookies()" class="btn-clean">
-                            <span class="btn-icon"></span>
+                            <span class="btn-icon">🍪</span>
                             <span class="btn-text">清空Cookie数据</span>
                         </button>
                     </div>
                     <div id="clearStatus" class="status-message"></div>
                 </div>
+            </div>
+            
+            <!-- 钓鱼平台演示 -->
+
+            
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="card-icon">💬</span>
+                    <span class="card-title">存在漏洞的论坛</span>
+                </div>
+                <p class="card-desc">一个拟真的技术论坛页面，存在存储型XSS漏洞，攻击者可以在评论区注入恶意代码。</p>
+                <div class="card-features">
+                    <div class="feature-item">存储型XSS漏洞</div>
+                    <div class="feature-item">反射型XSS漏洞</div>
+                    <div class="feature-item">拟真业务场景</div>
+                </div>
+                <a href="forum.php" class="btn-demo">访问论坛</a>
+            </div>
+
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="card-icon">🔐</span>
+                    <span class="card-title">伪造登录页面</span>
+                </div>
+                <p class="card-desc">高度仿真的论坛登录页面，用于诱骗用户输入用户名和密码。</p>
+                <div class="card-features">
+                    <div class="feature-item">完美复刻真实页面</div>
+                    <div class="feature-item">自动跳转回原页面</div>
+                    <div class="feature-item">凭据自动保存</div>
+                </div>
+                <a href="phishing/login.html" class="btn-demo">查看钓鱼页面</a>
+            </div>
+
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <span class="card-title">凭据查看器</span>
+                </div>
+                <p class="card-desc">查看所有被窃取的用户凭据，包括用户名、密码、IP地址等信息。</p>
+                <div class="card-features">
+                    <div class="feature-item">实时更新数据</div>
+                    <div class="feature-item">显示详细信息</div>
+                    <div class="feature-item">支持清空数据</div>
+                </div>
+                <a href="view_credentials.php" class="btn-demo btn-danger">查看凭据</a>
+            </div>
+
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="card-icon">🍪</span>
+                    <span class="card-title">Cookie查看器</span>
+                </div>
+                <p class="card-desc">查看所有被窃取的用户Cookie，包括Session ID、用户信息等敏感数据。</p>
+                <div class="card-features">
+                    <div class="feature-item">实时捕获Cookie</div>
+                    <div class="feature-item">显示完整Cookie内容</div>
+                    <div class="feature-item">支持清空数据</div>
+                </div>
+                <a href="view_cookies.php" class="btn-demo btn-danger">查看Cookie</a>
             </div>
         </div>
 
@@ -414,7 +413,7 @@
         </div>
 
         <div class="explain-section">
-            <h2 class="explain-title"> XSS Payload 构成详解</h2>
+            <h2 class="explain-title">📚 XSS Payload 构成详解</h2>
             <p style="text-align: center; color: #aaa; margin-bottom: 30px;">了解XSS Payload的各个组成部分，帮助你更好地理解和防御XSS攻击</p>
             
             <div class="explain-grid">
@@ -435,7 +434,7 @@
                     </div>
                     
                     <div class="component-box">
-                        <div class="component-title">3️ 标记设置</div>
+                        <div class="component-title">3️⃣ 标记设置</div>
                         <div class="explain-code">sessionStorage.setItem('phished', 'true')</div>
                         <p class="explain-text">设置标记，表示该用户已被攻击过。sessionStorage在浏览器关闭后自动清除。</p>
                     </div>
@@ -494,7 +493,7 @@
                     </div>
                     
                     <div class="component-box">
-                        <div class="component-title">6️ 发送请求</div>
+                        <div class="component-title">6️⃣ 发送请求</div>
                         <div class="explain-code">img.src = '...'</div>
                         <p class="explain-text">设置图片的src属性，浏览器会立即发起HTTP请求，Cookie被悄悄发送到攻击者服务器。</p>
                     </div>
@@ -503,7 +502,7 @@
 
             <!-- 关键技术点 -->
             <div style="margin-top: 30px;">
-                <h3 style="color: #ff6b6b; margin-bottom: 20px;"> 关键技术点</h3>
+                <h3 style="color: #ff6b6b; margin-bottom: 20px;">⚡ 关键技术点</h3>
                 
                 <div class="explain-grid">
                     <div class="explain-card">
@@ -515,7 +514,7 @@
                     </div>
                     
                     <div class="explain-card">
-                        <div class="explain-card-title">️ 为什么使用 Image 对象？</div>
+                        <div class="explain-card-title">🖼️ 为什么使用 Image 对象？</div>
                         <p class="explain-text">• 跨域友好：不受同源策略限制</p>
                         <p class="explain-text">• 无感发送：不会阻塞页面加载</p>
                         <p class="explain-text">• 隐蔽性强：不会在页面显示任何内容</p>
