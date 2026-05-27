@@ -1,0 +1,22 @@
+# Screenshots Storage Directory
+
+This directory stores screenshots captured by XSS attacks.
+
+## Security Notice
+
+- This directory should have write permissions
+- Screenshots are stored as PNG files
+- Each screenshot includes metadata in screenshots_log.txt
+
+## Directory Structure
+
+```
+screenshots/
+├── screenshot_YYYYMMDD_HHMMSS_IP.png
+├── screenshot_YYYYMMDD_HHMMSS_IP.png
+└ └── ...
+```
+
+---
+
+⚠️ **Warning**: Only for educational purposes!

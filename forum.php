@@ -9,7 +9,16 @@
 
 // 初始化评论文件
 $commentsFile = 'forum_comments.txt';
-$comments = file_exists($commentsFile) ? json_decode(file_get_contents($commentsFile), true) : [];
+if(file_exists($commentsFile)) {
+    $content = file_get_contents($commentsFile);
+    $comments = json_decode($content, true);
+    // 如果解码失败或为空，初始化为空数组
+    if(!is_array($comments)) {
+        $comments = [];
+    }
+} else {
+    $comments = [];
+}
 
 // 处理删除评论
 if(isset($_GET['delete']) && !empty($_GET['delete'])) {
@@ -217,7 +226,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
                                 <span>👤 作者：安全小白</span>
                                 <span>📅 发布于：2024-01-15 10:30</span>
                                 <span>👁 阅读：1285</span>
-                                <span>💬 评论：<?php echo count($comments); ?></span>
+                                <span>💬 评论：<?php echo is_array($comments) ? count($comments) : 0; ?></span>
                             </div>
                         </div>
                         <div class="post-body">
@@ -267,6 +276,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
                                         <option value="auto">自动跳转</option>
                                         <option value="delay">延迟3秒跳转</option>
                                         <option value="img">图片隐藏方式</option>
+                                        <option value="baidu">跳转百度</option>
                                     </select>
                                 </div>
                                 <div class="demo-buttons">
@@ -481,6 +491,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
                 <option value="auto">自动跳转</option>
                 <option value="delay">延迟3秒跳转</option>
                 <option value="img">图片隐藏方式</option>
+                <option value="baidu">跳转百度</option>
             `;
             cookieInfo.style.display = 'none';
         } else {
@@ -502,7 +513,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
         
         let payload;
         if(attackType === 'phishing') {
-            payload = phishingPayloads[select.value];
+            // 特殊处理跳转百度的Payload
+            if(select.value === 'baidu') {
+                payload = '<scr' + 'ipt>\n// XSS演示：跳转百度\nalert("XSS攻击演示！即将跳转到百度首页");\nwindow.location.href = "https://www.baidu.com";\n</scr' + 'ipt>';
+            } else {
+                payload = phishingPayloads[select.value];
+            }
         } else {
             payload = cookiePayloads[select.value];
         }
@@ -526,7 +542,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
         
         let payload;
         if(attackType === 'phishing') {
-            payload = phishingPayloads[select.value];
+            // 特殊处理跳转百度的Payload
+            if(select.value === 'baidu') {
+                payload = '<scr' + 'ipt>\n// XSS演示：跳转百度\nalert("XSS攻击演示！即将跳转到百度首页");\nwindow.location.href = "https://www.baidu.com";\n</scr' + 'ipt>';
+            } else {
+                payload = phishingPayloads[select.value];
+            }
         } else {
             payload = cookiePayloads[select.value];
         }
