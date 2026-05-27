@@ -15,6 +15,8 @@
 | login.png | 钓鱼登录页面截图 | 1920x1080 |
 | view_credentials.png | 凭据查看页面截图 | 1920x1080 |
 | view_cookies.png | Cookie查看页面截图 | 1920x1080 |
+| defense_demo1.png | XSS防御演示页面截图1 | 1920x1080 |
+| defense_demo2.png | XSS防御演示页面截图2 | 1920x1080 |
 | phishing_demo.png | 钓鱼平台功能演示截图 | 1920x1080 |
 
 ---
