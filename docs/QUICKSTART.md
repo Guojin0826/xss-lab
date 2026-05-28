@@ -60,48 +60,66 @@ chmod -R 777 data/
 
 访问以下页面确认安装成功：
 - ✅ 演示首页：`demo.php`
+- ✅ XSS类型演示：`xss_types_demo.php`
 - ✅ 论坛页面：`forum.php`
+- ✅ 键盘记录演示：`keylogger_demo.php`
 - ✅ Payload库：`payload_library.php`
 - ✅ 防御演示：`defense_demo.php`
-- ✅ 凭据查看：`view_credentials.php`
-- ✅ Cookie查看：`view_cookies.php`
+- ✅ 数据查看器：`viewer.php`
 
 ## 📖 使用教程
 
-### 1. 钓鱼攻击演示
+### 1. XSS类型学习（入门）
+
+1. 访问 `xss_types_demo.php`
+2. 学习反射型、存储型、DOM型XSS的原理
+3. 使用提供的Payload进行测试
+4. 查看防御建议
+
+### 2. 钓鱼攻击演示
 
 1. 访问 `forum.php`
 2. 在评论区输入钓鱼Payload（见demo.php）
 3. 刷新页面触发跳转
 4. 在钓鱼页面输入凭据
-5. 访问 `view_credentials.php` 查看窃取的数据
+5. 访问 `viewer.php` 查看窃取的数据
 
-### 2. Cookie窃取演示
+### 3. Cookie窃取演示
 
 1. 访问 `forum.php`
 2. 点击"触发XSS攻击"按钮
 3. Cookie自动发送到服务器
-4. 访问 `view_cookies.php` 查看窃取的Cookie
+4. 访问 `viewer.php` 查看窃取的Cookie
 
-### 3. Payload库使用
+### 4. 键盘记录演示
+
+1. 访问 `keylogger_demo.php`
+2. 在输入框中输入内容
+3. 实时查看键盘记录
+4. 访问 `viewer.php` 查看记录数据
+
+### 5. Payload库使用
 
 1. 访问 `payload_library.php`
 2. 浏览或搜索Payload
 3. 点击"复制"按钮复制Payload
 4. 点击"测试"按钮测试Payload效果
 
-### 4. XSS防御演示
+### 6. XSS防御演示
 
 1. 访问 `defense_demo.php`
 2. 查看不同防御方法的对比
 3. 输入测试内容查看过滤效果
 4. 学习防御代码实现
 
-### 5. 清除测试数据
+### 7. 清除测试数据
 
-- 清除凭据：访问 `clear_credentials.php`
-- 清除Cookie：访问 `clear_cookies.php`
-- 清除评论：访问 `clear_forum_comments.php`
+在演示首页 `demo.php` 中点击相应按钮即可清空数据：
+- 清空凭据数据
+- 清空Cookie数据
+- 清空键盘记录
+- 清空论坛评论
+- 清空XSS演示评论
 
 ## ⚠️ 安全警告
 

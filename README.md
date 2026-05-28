@@ -16,14 +16,24 @@
 #### 演示入口页面
 ![演示入口](img/demo1.png)
 
-#### 论坛主页面
+#### XSS类型演示（入门学习）
+![XSS类型演示1](img/xss_types_demo1.png)
+
+![XSS类型演示2](img/xss_types_demo2.png)
+
+![XSS类型演示3](img/xss_types_demo3.png)
+
+#### 论坛主页面（拟真场景）
 ![论坛页面](img/forum.png)
 
-#### 凭据查看页面
-![凭据查看](img/view_credentials.png)
+#### 钓鱼登录页面
+![钓鱼登录](img/login.png)
 
-#### Cookie查看页面
-![Cookie查看](img/view_cookies.png)
+#### 数据查看器（整合版）
+![数据查看器](img/viewer.png)
+
+#### 键盘记录演示
+![键盘记录演示](img/keylogger_demo.png)
 
 #### XSS防御演示页面
 ![防御演示1](img/defense_demo1.png)
@@ -40,14 +50,16 @@
 
 ## ✨ 功能特性
 
+- 📚 **XSS类型演示** - 入门学习反射型、存储型、DOM型XSS的区别
 - 💣 **XSS Payload库** - 235+个常见XSS攻击向量，支持一键复制和测试
 - 🛡️ **XSS防御演示** - 学习如何正确防御XSS攻击
 - 🎣 **钓鱼攻击演示** - 窃取用户账号密码
 - 🍪 **Cookie窃取演示** - 窃取用户会话信息
+- ⌨️ **键盘记录演示** - 记录用户键盘输入
 - 📝 **存储型XSS** - 留言板评论功能
 - 🔍 **反射型XSS** - 搜索功能演示
 - 🎨 **拟真界面** - 模拟真实技术论坛
-- 📊 **实时数据查看** - 查看窃取的凭据和Cookie
+- 📊 **整合数据查看器** - 统一查看窃取的凭据、Cookie和键盘记录
 
 ## 🚀 快速开始
 
@@ -101,8 +113,10 @@ chmod 755 data/
 
 | 攻击类型 | 演示文件 | 说明 |
 |---------|---------|------|
+| XSS类型演示 | `xss_types_demo.php` | 入门学习三种XSS类型 |
 | 钓鱼攻击 | `forum.php` | 窃取用户账号密码 |
 | Cookie窃取 | `forum.php` | 窃取用户会话信息 |
+| 键盘记录 | `keylogger_demo.php` | 记录用户键盘输入 |
 | 存储型XSS | `forum.php` | 评论功能注入 |
 | 反射型XSS | `forum.php` | 搜索功能注入 |
 
@@ -111,26 +125,29 @@ chmod 755 data/
 ```
 xss-lab/
 ├── demo.php                 # 演示入口页面
-├── forum.php                # 存在XSS漏洞的论坛
-├── payload_library.php      # XSS Payload库
-├── payload_library.js       # Payload库外部脚本
-├── payloads.json            # Payload数据文件（235+条）
-├── defense_demo.php         # XSS防御演示
-├── view_credentials.php     # 查看窃取的凭据
-├── view_cookies.php         # 查看窃取的Cookie
-├── steal.php                # 接收凭据的脚本
-├── steal_cookie.php         # 接收Cookie的脚本
-├── clear_credentials.php    # 清空凭据数据
-├── clear_cookies.php        # 清空Cookie数据
-├── clear_forum_comments.php # 清空论坛评论
-├── config.example.php       # 配置示例文件
-├── test_payload.html        # Payload测试页面
-├── simple_test.html         # 简化测试页面
-├── phishing/                # 钓鱼页面目录
-│   └── login.html           # 伪造的登录页面
-├── data/                    # 数据存储目录
-├── assets/                  # 静态资源目录
-├── img/                     # 截图目录
+├── xss_types_demo.php        # XSS类型演示（入门学习）
+├── forum.php                 # 存在XSS漏洞的论坛
+├── keylogger_demo.php        # 键盘记录演示
+├── payload_library.php       # XSS Payload库
+├── payload_library.js        # Payload库外部脚本
+├── payloads.json             # Payload数据文件（235+条）
+├── defense_demo.php          # XSS防御演示
+├── viewer.php                # 整合数据查看器（凭据/Cookie/键盘记录）
+├── steal.php                 # 接收凭据的脚本
+├── steal_cookie.php          # 接收Cookie的脚本
+├── save_keylog.php           # 保存键盘记录
+├── clear_credentials.php     # 清空凭据数据
+├── clear_cookies.php         # 清空Cookie数据
+├── clear_keylogs.php         # 清空键盘记录
+├── clear_forum_comments.php  # 清空论坛评论
+├── clear_xss_comments.php    # 清空XSS演示评论
+├── config.example.php        # 配置示例文件
+├── simple_test.html          # 简化测试页面
+├── phishing/                 # 钓鱼页面目录
+│   └── login.html            # 伪造的登录页面
+├── data/                     # 数据存储目录
+├── assets/                   # 静态资源目录
+├── img/                      # 截图目录
 └── docs/                    # 详细文档目录
 ```
 
