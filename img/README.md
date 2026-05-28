@@ -17,6 +17,9 @@
 | view_cookies.png | Cookie查看页面截图 | 1920x1080 |
 | defense_demo1.png | XSS防御演示页面截图1 | 1920x1080 |
 | defense_demo2.png | XSS防御演示页面截图2 | 1920x1080 |
+| payload_library1.png | XSS Payload库页面截图1 | 1920x1080 |
+|| payload_library2.png | XSS Payload库页面截图2 | 1920x1080 |
+|| test_payload.png | Payload测试页面截图 | 1920x1080 |
 | phishing_demo.png | 钓鱼平台功能演示截图 | 1920x1080 |
 
 ---

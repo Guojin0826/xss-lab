@@ -46,17 +46,20 @@
 
 ### 演示场景
 
-1. **🎣 钓鱼攻击** - 通过XSS注入恶意代码，将用户重定向到伪造的登录页面，窃取用户凭据
-2. **🍪 Cookie窃取** - 窃取用户的Cookie信息，包括Session ID等敏感数据
-3. **💬 存储型XSS** - 恶意代码存储在服务器，所有访问该页面的用户都会受到影响
-4. **🔍 反射型XSS** - 通过URL参数传递恶意代码，诱骗用户点击恶意链接
+1. **💣 XSS Payload库** - 收集了235+个常见XSS攻击向量，支持一键复制和测试
+2. **🛡️ XSS防御演示** - 学习如何正确防御XSS攻击，对比多种防御方法
+3. **🎣 钓鱼攻击** - 通过XSS注入恶意代码，将用户重定向到伪造的登录页面，窃取用户凭据
+4. **🍪 Cookie窃取** - 窃取用户的Cookie信息，包括Session ID等敏感数据
+5. **💬 存储型XSS** - 恶意代码存储在服务器，所有访问该页面的用户都会受到影响
+6. **🔍 反射型XSS** - 通过URL参数传递恶意代码，诱骗用户点击恶意链接
 
 ## 🎯 功能特性
 
+- ✅ XSS Payload库，包含235+个常见攻击向量
+- ✅ XSS防御演示，对比多种防御方法
 - ✅ 拟真的技术论坛页面，降低用户警惕
 - ✅ 完整的钓鱼攻击流程演示
 - ✅ Cookie窃取功能演示
-- ✅ 多种XSS Payload示例
 - ✅ 实时查看窃取的数据
 - ✅ 详细的Payload构成解释
 - ✅ 一键触发演示功能
@@ -69,24 +72,30 @@
 xss/
 ├── 📄 README.md                 # 项目说明文档
 ├── 📄 LICENSE                   # 开源协议
+├── 📄 AUTHORS                   # 作者信息
 ├── 📄 .gitignore               # Git忽略文件
 ├── 📄 demo.php                 # 演示入口页面
 ├── 📄 forum.php                # 存在XSS漏洞的论坛页面
-├── 📄 index.php                # 项目首页（重定向到demo.php）
+├── 📄 payload_library.php      # XSS Payload库
+├── 📄 payload_library.js       # Payload库外部脚本
+├── 📄 payloads.json            # Payload数据文件（235+条）
+├── 📄 defense_demo.php         # XSS防御演示
+├── 📄 test_payload.html        # Payload测试页面
+├── 📄 simple_test.html         # 简化测试页面
 ├── 📁 phishing/                # 钓鱼攻击相关文件
 │   └── 📄 login.html           # 伪造的登录页面
 ├── 📁 data/                    # 数据存储目录
 │   ├── 📄 stolen_credentials.txt  # 窃取的凭据（自动生成）
-│   └── 📄 stolen_cookies.txt      # 窃取的Cookie（自动生成）
+│   ├── 📄 stolen_cookies.txt      # 窃取的Cookie（自动生成）
+│   └── 📄 forum_comments.txt      # 论坛评论（自动生成）
 ├── 📄 steal.php                # 接收窃取的凭据
 ├── 📄 steal_cookie.php         # 接收窃取的Cookie
 ├── 📄 view_credentials.php     # 查看窃取的凭据
 ├── 📄 view_cookies.php         # 查看窃取的Cookie
 ├── 📄 clear_credentials.php    # 清空凭据数据
 ├── 📄 clear_cookies.php        # 清空Cookie数据
+├── 📄 clear_forum_comments.php # 清空论坛评论
 └── 📁 assets/                  # 静态资源目录
-    ├── 📁 css/                 # 样式文件
-    └── 📁 js/                  # JavaScript文件
 ```
 
 ## 🚀 快速开始

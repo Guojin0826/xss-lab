@@ -1,4 +1,4 @@
-# ✅ GitHub信息更新完成
+# ✅ 项目更新完成
 
 ## 📊 更新统计
 
@@ -6,28 +6,36 @@
 
 **GitHub用户名：** Guojin0826  
 **邮箱地址：** jinrcsy@gmail.com  
-**GitHub链接：** https://github.com/Guojin0826
+**GitHub链接：** https://github.com/Guojin0826/xss-lab  
+**更新时间：** 2026-05-28
 
 ### 更新的文件列表
 
-#### 📄 根目录文件（10个）
+#### 📄 根目录文件（15个）
 - ✅ README.md
 - ✅ LICENSE
-- ✅ AUTHORS（新增）
+- ✅ AUTHORS
 - ✅ config.example.php
 - ✅ demo.php
 - ✅ forum.php
+- ✅ payload_library.php
+- ✅ payload_library.js
+- ✅ payloads.json
+- ✅ defense_demo.php
+- ✅ test_payload.html
+- ✅ simple_test.html
 - ✅ steal.php
 - ✅ steal_cookie.php
 - ✅ view_credentials.php
 - ✅ view_cookies.php
 - ✅ clear_credentials.php
 - ✅ clear_cookies.php
+- ✅ clear_forum_comments.php
 
 #### 📁 phishing/ 目录（1个）
 - ✅ login.html
 
-#### 📁 docs/ 目录（6个）
+#### 📁 docs/ 目录（20个）
 - ✅ README.md
 - ✅ SECURITY.md
 - ✅ CONTRIBUTING.md
@@ -35,6 +43,19 @@
 - ✅ CHANGELOG.md
 - ✅ PROJECT_SUMMARY.md
 - ✅ CHECKLIST.md
+- ✅ FILES.md
+- ✅ STRUCTURE.md
+- ✅ PAYLOAD_LIBRARY.md
+- ✅ DEFENSE_DEMO.md
+- ✅ VERIFICATION_GUIDE.md
+- ✅ SCREENSHOTS.md
+- ✅ REPO_DESCRIPTION.md
+- ✅ BADGES.md
+- ✅ QUICKSTART.md
+- ✅ CODE_STYLE.md
+- ✅ PROJECT_CHECK_REPORT.md
+- ✅ UPDATE_LOG.md
+- ✅ UPDATE_SUMMARY.md
 
 ## 🔍 验证结果
 

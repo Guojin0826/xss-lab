@@ -5,6 +5,73 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 并且本项目遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.2.0] - 2026-05-28
+
+### 新增
+- ✨ Payload库大幅扩充
+  - 收录235+个XSS攻击向量
+  - 从Payload.txt导入大量Payload
+  - 新增多个分类：JavaScript URL、HTML事件属性、Script标签、IMG标签、iframe标签、SVG标签、CSS样式注入、高级绕过技术
+- ✨ Payload测试功能
+  - 新增test_payload.html测试页面
+  - 新增simple_test.html简化测试页面
+  - 支持手动输入Payload测试
+  - 支持从URL参数加载Payload
+  - 智能处理script标签执行
+- ✨ Payload库外部脚本
+  - 新增payload_library.js外部脚本文件
+  - 绕过CSP策略限制
+  - 优化代码组织结构
+- 📝 新增Payload触发方式智能提示
+- 📝 新增Payload构成解释
+
+### 修复
+- 🐛 修复JSON格式错误（非法转义字符\j、\v、\s等）
+- 🐛 修复CSP策略阻止字体加载问题
+- 🐛 修复正则表达式转义错误（\\s应为\s）
+- 🐛 修复innerHTML插入script标签不执行的问题
+- 🐛 修复测试页面一直加载中的问题
+
+### 更新
+- 📝 更新所有文档，匹配当前项目状态
+- 📝 更新文件结构说明
+- 📝 更新Payload库文档
+- 🎨 优化代码格式化
+
+## [1.1.1] - 2026-05-27
+
+### 修复
+- 🐛 修复payload_library.php页面的XSS漏洞
+  - 添加escapeHtml函数对所有动态内容进行HTML转义
+  - 修复renderPayloadCard中所有字段的转义（name、code、desc、tags）
+  - 修复testPayload中的内容转义
+  - 确保Payload以纯文本形式展示，不会自动执行
+- 📝 新增XSS漏洞修复说明文档（docs/XSS_FIX.md）
+- 🧪 新增XSS测试示例页面（xss_test.html）
+
+## [1.1.0] - 2026-05-26
+
+### 新增
+- ✨ XSS Payload库功能（payload_library.php）
+  - 收录80+个常见XSS攻击向量
+  - 6大分类：基础、绕过过滤、事件处理、特殊场景、高级技巧、编码绕过
+  - 一键复制Payload功能
+  - 危害等级标识（低/中/高/严重）
+  - Payload效果说明
+  - 测试功能（跳转到论坛测试）
+- ✨ XSS防御演示模块（defense_demo.php）
+  - 5种防御方法对比
+  - 实时演示效果
+  - 防御代码示例
+- 📝 Payload库文档（docs/PAYLOAD_LIBRARY.md）
+- 📝 防御演示文档（docs/DEFENSE_DEMO.md）
+
+### 更新
+- 🎨 优化demo.php模块布局和排序
+- 🎨 改进UI界面设计
+- 📝 更新README.md，添加Payload库说明
+- 📝 更新项目结构文档
+
 ## [1.0.0] - 2024-01-15
 
 ### 新增

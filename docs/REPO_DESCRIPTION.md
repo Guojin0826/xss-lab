@@ -3,13 +3,13 @@
 ## 📝 Short Description (最多350字符)
 
 ```
-🎯 XSS Vulnerability Lab - Interactive XSS attack demonstration platform for security education. Features phishing attacks, cookie theft demos, and detailed payload explanations. Perfect for cybersecurity training and awareness.
+🎯 XSS Vulnerability Lab - Interactive XSS attack demonstration platform for security education. Features 235+ payloads, phishing attacks, cookie theft demos, defense techniques, and detailed payload explanations. Perfect for cybersecurity training.
 ```
 
 ## 🌐 中文描述
 
 ```
-🎯 XSS漏洞演示靶场 - 交互式XSS攻击演示平台，用于安全教育教学。包含钓鱼攻击、Cookie窃取演示和详细的Payload解析。适合网络安全培训和意识教育。
+🎯 XSS漏洞演示靶场 - 交互式XSS攻击演示平台，用于安全教育教学。包含235+个Payload、钓鱼攻击、Cookie窃取演示、防御技术和详细的Payload解析。适合网络安全培训和意识教育。
 ```
 
 ## 🏷️ Topics/Tags
@@ -41,7 +41,7 @@ xss-lab
 
 ### Description (GitHub)
 ```
-🎯 Interactive XSS attack demonstration platform for security education - phishing, cookie theft, and payload analysis
+🎯 Interactive XSS attack demonstration platform for security education - 235+ payloads, phishing, cookie theft, defense techniques, and payload analysis
 ```
 
 ### Website URL
@@ -69,7 +69,7 @@ https://github.com/Guojin0826/xss-lab
 
 **Description:** 
 ```
-🎯 XSS漏洞演示靶场 - 交互式XSS攻击演示平台，包含钓鱼攻击、Cookie窃取演示，适合安全教育教学
+🎯 XSS漏洞演示靶场 - 交互式XSS攻击演示平台，包含235+个Payload、钓鱼攻击、Cookie窃取演示、防御技术，适合安全教育教学
 ```
 
 **Website:** `https://github.com/Guojin0826/xss-lab`
@@ -97,7 +97,7 @@ https://github.com/Guojin0826/xss-lab
 
 **Description:**
 ```
-🎯 XSS漏洞演示靶场 - 交互式XSS攻击演示平台，包含钓鱼攻击、Cookie窃取演示，适合安全教育教学
+🎯 XSS漏洞演示靶场 - 交互式XSS攻击演示平台，包含235+个Payload、钓鱼攻击、Cookie窃取演示、防御技术，适合安全教育教学
 ```
 
 **Website:**
@@ -116,17 +116,17 @@ xss security vulnerability cybersecurity security-education web-security php dem
 
 ### English
 ```
-🎯 XSS Vulnerability Lab - An interactive platform demonstrating XSS attacks for security education. Features phishing simulations, cookie theft demonstrations, and comprehensive payload analysis. Ideal for cybersecurity training.
+🎯 XSS Vulnerability Lab - An interactive platform demonstrating XSS attacks for security education. Features 235+ payloads, phishing simulations, cookie theft demonstrations, defense techniques, and comprehensive payload analysis. Ideal for cybersecurity training.
 ```
 
 ### 中文
 ```
-🎯 XSS漏洞演示靶场 - 交互式XSS攻击演示平台，用于安全教育教学。包含钓鱼攻击模拟、Cookie窃取演示和完整的Payload解析。适合网络安全培训。
+🎯 XSS漏洞演示靶场 - 交互式XSS攻击演示平台，用于安全教育教学。包含235+个Payload、钓鱼攻击模拟、Cookie窃取演示、防御技术和完整的Payload解析。适合网络安全培训。
 ```
 
 ### 简短版（适合移动端）
 ```
-🎯 XSS漏洞演示靶场 - 安全教育教学工具，演示钓鱼攻击和Cookie窃取
+🎯 XSS漏洞演示靶场 - 安全教育教学工具，235+个Payload，演示钓鱼攻击、Cookie窃取和防御技术
 ```
 
 ---
@@ -145,7 +145,7 @@ xss security vulnerability cybersecurity security-education web-security php dem
 
 ### 搜索友好描述
 ```
-XSS漏洞演示靶场是一个用于网络安全教育的交互式平台。该项目演示了反射型XSS、存储型XSS和DOM型XSS攻击，包括钓鱼攻击和Cookie窃取的实际案例。适合安全研究人员、开发人员和学生学习和理解XSS漏洞的危害。
+XSS漏洞演示靶场是一个用于网络安全教育的交互式平台。该项目包含235+个XSS Payload，演示了反射型XSS、存储型XSS和DOM型XSS攻击，包括钓鱼攻击、Cookie窃取和防御技术的实际案例。适合安全研究人员、开发人员和学生学习和理解XSS漏洞的危害及防御方法。
 ```
 
 ---

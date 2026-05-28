@@ -61,6 +61,8 @@ chmod -R 777 data/
 访问以下页面确认安装成功：
 - ✅ 演示首页：`demo.php`
 - ✅ 论坛页面：`forum.php`
+- ✅ Payload库：`payload_library.php`
+- ✅ 防御演示：`defense_demo.php`
 - ✅ 凭据查看：`view_credentials.php`
 - ✅ Cookie查看：`view_cookies.php`
 
@@ -81,10 +83,25 @@ chmod -R 777 data/
 3. Cookie自动发送到服务器
 4. 访问 `view_cookies.php` 查看窃取的Cookie
 
-### 3. 清除测试数据
+### 3. Payload库使用
+
+1. 访问 `payload_library.php`
+2. 浏览或搜索Payload
+3. 点击"复制"按钮复制Payload
+4. 点击"测试"按钮测试Payload效果
+
+### 4. XSS防御演示
+
+1. 访问 `defense_demo.php`
+2. 查看不同防御方法的对比
+3. 输入测试内容查看过滤效果
+4. 学习防御代码实现
+
+### 5. 清除测试数据
 
 - 清除凭据：访问 `clear_credentials.php`
 - 清除Cookie：访问 `clear_cookies.php`
+- 清除评论：访问 `clear_forum_comments.php`
 
 ## ⚠️ 安全警告
 

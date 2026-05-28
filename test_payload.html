@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 注意：此页面故意不设置CSP，以便测试XSS Payload -->
+    <title>XSS Payload 测试环境</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .payload-display {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+            font-size: 13px;
+            line-height: 1.5;
+            border: 1px solid #333;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .render-area {
+            border: 3px dashed #667eea;
+            padding: 30px;
+            margin: 20px 0;
+            min-height: 200px;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+        
+        .render-label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .warning {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+            border-left: 5px solid #ffc107;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            font-weight: 500;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .section-title {
+            color: #667eea;
+            margin: 25px 0 15px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff5252;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(255,82,82,0.3);
+            transition: transform 0.2s;
+            z-index: 1000;
+        }
+        
+        .close-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .success-indicator {
+            display: none;
+            background: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .success-indicator.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #764ba2;
+        }
+        
+        .payload-name {
+            background: #f5f5f5;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .manual-test {
+            background: #fff8e1;
+            border-left: 5px solid #ff9800;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .manual-test input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <button class="close-btn" onclick="window.close()">✕ 关闭窗口</button>
+    
+    <div class="container">
+        <h1>🧪 XSS Payload 测试环境</h1>
+        <div class="warning">⚠️ 此窗口用于安全测试，Payload将在下方渲染区域执行</div>
+        
+        <div class="info-box">
+            <strong>📋 测试说明：</strong><br>
+            • 如果Payload成功执行，将在此页面显示效果或弹出提示<br>
+            • 部分Payload需要用户交互（如点击）才能触发<br>
+            • 此窗口无CSP限制，可测试各种XSS向量<br>
+            • 测试完成后可关闭此窗口
+        </div>
+        
+        <h2 class="section-title">📝 Payload 名称</h2>
+        <div class="payload-name" id="payloadName">加载中...</div>
+        
+        <h2 class="section-title">📝 Payload 源代码</h2>
+        <div class="payload-display" id="payloadCode">加载中...</div>
+        
+        <h2 class="section-title">🎯 渲染执行区域</h2>
+        <div class="render-label">以下区域将渲染Payload（如果包含可执行代码，将会执行）：</div>
+        <div class="render-area" id="renderArea">
+            <p style="color: #999;">等待渲染...</p>
+        </div>
+        
+        <div class="success-indicator" id="successIndicator">✅ XSS Payload 已成功执行！</div>
+        
+        <div class="info-box" id="triggerHint" style="display: none;">
+            <strong>💡 触发提示：</strong>
+            <div id="triggerText"></div>
+        </div>
+        
+        <div class="manual-test">
+            <strong>🔧 手动测试：</strong>
+            <p style="margin: 10px 0; font-size: 14px;">如果Payload未自动执行，可以在此手动输入测试：</p>
+            <input type="text" id="manualInput" placeholder="输入Payload或修改上面的Payload...">
+            <button class="btn" onclick="executeManual()" style="background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;">执行Payload</button>
+        </div>
+        
+        <a href="javascript:window.close()" class="back-btn">← 关闭测试窗口</a>
+    </div>
+    
+    <script>
+        let currentPayload = '';
+        
+        // 检测Payload类型并返回触发提示
+        function analyzePayload(payload) {
+            const hints = [];
+            
+            // 检测需要用户交互的Payload
+            if (payload.includes('onclick') || payload.includes('OnClick')) {
+                hints.push('• 此Payload包含 <strong>onclick</strong> 事件，需要<strong>点击</strong>元素才能触发');
+            }
+            if (payload.includes('onmouseover') || payload.includes('OnMouseOver')) {
+                hints.push('• 此Payload包含 <strong>onmouseover</strong> 事件，需要<strong>鼠标悬停</strong>才能触发');
+            }
+            if (payload.includes('onfocus') || payload.includes('OnFocus')) {
+                hints.push('• 此Payload包含 <strong>onfocus</strong> 事件，需要<strong>聚焦</strong>元素才能触发');
+            }
+            if (payload.includes('onerror') && payload.includes('img')) {
+                hints.push('• 此Payload包含 <strong>img onerror</strong>，如果图片加载失败将自动触发');
+            }
+            if (payload.includes('onload') && !payload.includes('<script')) {
+                hints.push('• 此Payload包含 <strong>onload</strong> 事件，元素加载完成后将自动触发');
+            }
+            if (payload.includes('javascript:') && payload.includes('href')) {
+                hints.push('• 此Payload包含 <strong>javascript:</strong> 协议，需要<strong>点击链接</strong>才能触发');
+            }
+            if (payload.includes('<svg') && payload.includes('onload')) {
+                hints.push('• 此Payload使用 <strong>SVG onload</strong>，将自动触发');
+            }
+            if (payload.includes('<body') && payload.includes('onload')) {
+                hints.push('• 此Payload使用 <strong>body onload</strong>，但在此页面可能无法触发（body已加载）');
+            }
+            if (payload.includes('<iframe')) {
+                hints.push('• 此Payload包含 <strong>iframe</strong>，可能需要等待加载');
+            }
+            if (payload.includes('eval(') || payload.includes('eval (')) {
+                hints.push('• 此Payload使用 <strong>eval()</strong>，将自动执行');
+            }
+            
+            // 检测自动执行的Payload
+            if (payload.includes('<script>') || payload.includes('<script ')) {
+                hints.push('• 此Payload包含 <strong>script标签</strong>，将自动执行');
+            }
+            
+            return hints;
+        }
+        
+        // 执行Payload（特殊处理script标签）
+        function executePayload(payload) {
+            const renderArea = document.getElementById('renderArea');
+            renderArea.innerHTML = '';
+            
+            // 检查是否包含script标签
+            const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/gi;
+            const hasScript = scriptRegex.test(payload);
+            
+            if (hasScript) {
+                // 提取script内容并执行
+                const scriptContent = payload.replace(scriptRegex, function(match, code) {
+                    return '';
+                });
+                
+                // 先插入非script内容
+                renderArea.innerHTML = scriptContent;
+                
+                // 提取并执行所有script
+                const scripts = payload.match(/<script[^>]*>[\s\S]*?<\/script>/gi) || [];
+                scripts.forEach(function(scriptTag) {
+                    // 提取script内容
+                    const codeMatch = scriptTag.match(/<script[^>]*>([\s\S]*?)<\/script>/i);
+                    if (codeMatch && codeMatch[1]) {
+                        try {
+                            // 创建新的script元素并执行
+                            const script = document.createElement('script');
+                            script.textContent = codeMatch[1];
+                            renderArea.appendChild(script);
+                        } catch (e) {
+                            console.error('Script执行错误:', e);
+                        }
+                    }
+                });
+            } else {
+                // 直接插入HTML
+                renderArea.innerHTML = payload;
+            }
+        }
+        
+        // 从URL参数获取payload数据
+        function getPayloadFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const encodedPayload = urlParams.get('data');
+            
+            if (!encodedPayload) {
+                document.getElementById('payloadCode').textContent = '错误：未找到Payload数据';
+                document.getElementById('renderArea').innerHTML = '<p style="color: red;">错误：未找到Payload数据</p>';
+                return;
+            }
+            
+            try {
+                // 解码payload
+                const payloadData = JSON.parse(decodeURIComponent(atob(encodedPayload)));
+                currentPayload = payloadData.code;
+                
+                // 显示payload名称
+                document.getElementById('payloadName').textContent = payloadData.name || '未命名Payload';
+                
+                // 显示payload代码（使用textContent防止执行）
+                document.getElementById('payloadCode').textContent = payloadData.code;
+                
+                // 设置手动测试输入框
+                document.getElementById('manualInput').value = payloadData.code;
+                
+                // 分析Payload并显示触发提示
+                const hints = analyzePayload(payloadData.code);
+                if (hints.length > 0) {
+                    document.getElementById('triggerText').innerHTML = hints.join('<br>');
+                    document.getElementById('triggerHint').style.display = 'block';
+                }
+                
+                // 在渲染区域执行payload
+                executePayload(payloadData.code);
+                
+                console.log('✅ Payload已加载:', payloadData.name);
+                console.log('📝 Payload代码:', payloadData.code);
+                console.log('💡 触发提示:', hints);
+                
+            } catch (error) {
+                console.error('❌ 解析Payload失败:', error);
+                document.getElementById('payloadCode').textContent = '错误：Payload解析失败';
+                document.getElementById('renderArea').innerHTML = '<p style="color: red;">错误：Payload解析失败 - ' + error.message + '</p>';
+            }
+        }
+        
+        // 手动执行Payload
+        function executeManual() {
+            const payload = document.getElementById('manualInput').value;
+            if (!payload) {
+                alert('请输入Payload');
+                return;
+            }
+            
+            currentPayload = payload;
+            document.getElementById('payloadCode').textContent = payload;
+            
+            // 分析Payload并显示触发提示
+            const hints = analyzePayload(payload);
+            if (hints.length > 0) {
+                document.getElementById('triggerText').innerHTML = hints.join('<br>');
+                document.getElementById('triggerHint').style.display = 'block';
+            } else {
+                document.getElementById('triggerHint').style.display = 'none';
+            }
+            
+            // 执行Payload
+            executePayload(payload);
+            console.log('✅ 手动执行Payload:', payload);
+        }
+        
+        // 页面加载完成后执行
+        window.addEventListener('DOMContentLoaded', getPayloadFromURL);
+        
+        // 监听XSS执行成功的消息
+        window.addEventListener('message', function(e) {
+            if (e.data === 'xss-triggered') {
+                document.getElementById('successIndicator').classList.add('show');
+            }
+        });
+        
+        // 页面加载完成提示
+        console.log('🧪 XSS测试环境已就绪，等待Payload执行...');
+        console.log('🔓 此页面无CSP限制，可以测试各种XSS向量');
+    </script>
+</body>
+</html>

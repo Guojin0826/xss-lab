@@ -23,6 +23,15 @@ Desktop.ini
 *.swp
 *~
 
+# 备份文件
+*.backup
+*_backup.*
+
+# 测试文件
+test_*.html
+test_*.php
+xss_test.html
+
 # PHP相关
 composer.phar
 vendor/

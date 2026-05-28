@@ -1,33 +1,44 @@
 # WebSocket服务器使用指南
 
-## 📋 概述
+> ⚠️ **注意：WebSocket实时控制功能已被移除**
+>
+> 该功能因复杂性和稳定性问题已被移除。当前版本使用更简单可靠的方案：
+> - Payload库使用CSP友好的外部JS文件
+> - 测试页面使用独立的HTML文件
+> - 钓鱼攻击使用传统的表单提交方式
 
-WebSocket服务器用于实现XSS实时控制功能，允许你远程执行JavaScript代码、查看在线设备、实时控制被注入的页面。
+## 📋 当前替代方案
+
+### Payload测试功能
+- `test_payload.html` - 独立的Payload测试页面
+- `simple_test.html` - 简化的测试页面
+- 通过URL参数传递Payload进行测试
+
+### 钓鱼攻击演示
+- `phishing/login.html` - 钓鱼登录页面
+- `steal.php` - 凭据接收脚本
+- 使用传统的HTTP请求方式
+
+### Cookie窃取演示
+- `steal_cookie.php` - Cookie接收脚本
+- `view_cookies.php` - Cookie查看页面
 
 ---
 
-## 🚀 快速启动
+## 📜 历史记录
 
-### 方法一：使用PHP内置WebSocket服务器（推荐）
+WebSocket功能曾在早期版本中提供：
+- 实时远程执行JavaScript
+- 在线设备列表
+- 实时控制面板
 
-**1. 检查PHP扩展**
-```bash
-php -m | grep sockets
-```
+但由于以下原因被移除：
+1. 配置复杂，需要额外的PHP扩展
+2. 稳定性问题
+3. 与CSP策略冲突
+4. 教学演示价值有限
 
-如果没有输出，需要启用sockets扩展：
-- 打开 `php.ini` 文件
-- 找到 `;extension=sockets`
-- 删除前面的分号 `;`
-- 重启PHP
-
-**2. 启动WebSocket服务器**
-```bash
-cd D:\工作\太原教学计划\xss
-php websocket_server.php
-```
-
-**3. 看到以下输出表示成功**
+---
 ```
 🚀 WebSocket服务器启动中...
 📍 地址: ws://0.0.0.0:8080

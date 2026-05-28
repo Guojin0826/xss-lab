@@ -47,6 +47,8 @@ php -S localhost:8000
 
 # 4. 访问项目
 # 打开浏览器访问: http://localhost:8000/demo.php
+# 或访问Payload库: http://localhost:8000/payload_library.php
+# 或访问防御演示: http://localhost:8000/defense_demo.php
 ```
 
 ### 方式二：XAMPP部署

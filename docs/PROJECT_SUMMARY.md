@@ -16,7 +16,7 @@
 ## 📊 项目概览
 
 **项目名称：** XSS Lab - XSS漏洞演示靶场  
-**版本：** 1.0.0  
+**版本：** 1.2.0  
 **类型：** 网络安全教学演示平台  
 **许可：** MIT License  
 
@@ -65,7 +65,30 @@
   - `view_cookies.php` - 查看Cookie数据
   - `clear_cookies.php` - 清空Cookie数据
 
-### 3. 🎮 演示控制面板
+### 3. 💣 XSS Payload库
+- **Payload库页面** (`payload_library.php`)
+  - 收录235+个XSS攻击向量
+  - 多种分类：基础、绕过过滤、事件处理、特殊场景、高级技巧等
+  - 一键复制Payload功能
+  - 危害等级标识（低/中/高/严重）
+  - Payload效果说明
+  - 测试功能
+
+- **Payload测试页面**
+  - `test_payload.html` - 完整测试页面
+  - `simple_test.html` - 简化测试页面
+  - 支持手动输入测试
+  - 支持URL参数加载
+  - 智能处理script标签执行
+
+### 4. 🛡️ XSS防御演示
+- **防御演示页面** (`defense_demo.php`)
+  - 5种防御方法对比
+  - 实时演示效果
+  - 防御代码示例
+  - 效果对比表格
+
+### 5. 🎮 演示控制面板
 - **Payload选择器**
   - 攻击类型选择（钓鱼/Cookie窃取）
   - Payload类型选择
@@ -78,7 +101,7 @@
   - 自动刷新数据
   - 状态显示
 
-### 4. 📚 教学文档
+### 6. 📚 教学文档
 - **完整的README**
   - 项目介绍
   - 功能特性
@@ -101,12 +124,15 @@ xss-lab/
 ├── 📄 核心文件
 │   ├── demo.php                    # 演示入口页面
 │   ├── forum.php                   # XSS漏洞论坛
+│   ├── payload_library.php         # XSS Payload库
+│   ├── defense_demo.php            # XSS防御演示
 │   ├── steal.php                   # 凭据接收脚本
 │   ├── steal_cookie.php            # Cookie接收脚本
 │   ├── view_credentials.php        # 凭据查看页面
 │   ├── view_cookies.php            # Cookie查看页面
 │   ├── clear_credentials.php       # 清空凭据
-│   └── clear_cookies.php           # 清空Cookie
+│   ├── clear_cookies.php           # 清空Cookie
+│   └── clear_forum_comments.php    # 清空评论
 │
 ├── 📁 phishing/
 │   └── login.html                  # 钓鱼登录页面

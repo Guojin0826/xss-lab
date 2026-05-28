@@ -6,17 +6,25 @@
 |--------|------|
 | `README.md` | 项目主页说明 |
 | `LICENSE` | MIT开源许可证 |
+| `AUTHORS` | 作者信息 |
 | `.gitignore` | Git忽略配置 |
 | `.gitattributes` | Git属性配置 |
 | `config.example.php` | 配置文件示例 |
 | `demo.php` | 演示入口页面 |
 | `forum.php` | XSS漏洞论坛页面 |
+| `payload_library.php` | XSS Payload库页面 |
+| `payload_library.js` | Payload库外部脚本 |
+| `payloads.json` | Payload数据文件（235+条） |
+| `defense_demo.php` | XSS防御演示页面 |
+| `test_payload.html` | Payload测试页面 |
+| `simple_test.html` | 简化测试页面 |
 | `steal.php` | 凭据窃取处理脚本 |
 | `steal_cookie.php` | Cookie窃取处理脚本 |
 | `view_credentials.php` | 凭据查看页面 |
 | `view_cookies.php` | Cookie查看页面 |
 | `clear_credentials.php` | 清空凭据脚本 |
 | `clear_cookies.php` | 清空Cookie脚本 |
+| `clear_forum_comments.php` | 清空论坛评论脚本 |
 
 ## 目录结构
 
@@ -26,7 +34,9 @@
 
 ### 📂 data/
 数据存储目录（自动生成）
-- 存储窃取的凭据和Cookie数据
+- `stolen_credentials.txt` - 窃取的凭据数据
+- `stolen_cookies.txt` - 窃取的Cookie数据
+- `forum_comments.txt` - 论坛评论数据
 
 ### 📂 assets/
 静态资源目录

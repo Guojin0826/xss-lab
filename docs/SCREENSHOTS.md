@@ -70,6 +70,61 @@
 
 ---
 
+## 💣 XSS Payload库
+
+![Payload库页面1](../img/payload_library1.png)
+
+![Payload库页面2](../img/payload_library2.png)
+
+**功能说明：**
+- 收录235+个XSS攻击向量
+- 多种分类筛选（基础、进阶、绕过、特殊场景）
+- 一键复制功能
+- 危害等级标识（低危、中危、高危、严重）
+- Payload效果说明
+- 智能触发方式检测（自动、点击、悬停、输入、焦点）
+- 独立测试功能
+- 搜索过滤功能
+- 返回主页面按钮
+
+---
+
+## 🧪 Payload测试页面
+
+![Payload测试页面](../img/test_payload.png)
+
+**功能说明：**
+- 独立的Payload测试环境
+- 无CSP限制，可执行任意Payload
+- 支持所有类型的XSS Payload
+- 实时显示测试结果
+- 安全的测试沙箱
+- 返回Payload库按钮
+- 清除测试区域功能
+
+**测试类型：**
+- ✅ Script标签注入
+- ✅ 事件处理器注入（onclick、onmouseover等）
+- ✅ HTML属性注入
+- ✅ SVG/MathML注入
+- ✅ JavaScript协议注入
+- ✅ CSS表达式注入
+- ✅ DOM操作注入
+
+---
+
+## 🛡️ XSS防御演示
+
+![防御演示页面](../img/defense_demo.png)
+
+**功能说明：**
+- 5种防御方法对比
+- 实时演示效果
+- 防御代码示例
+- 效果对比表格
+
+---
+
 ## 🍪 Cookie查看页面
 
 ![Cookie查看页面](../img/view_cookies.png)

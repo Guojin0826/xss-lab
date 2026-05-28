@@ -12,24 +12,28 @@ xss/
 ├── phishing/               # 钓鱼页面目录
 │   └── login.html
 ├── assets/                 # 静态资源目录
-│   ├── css/
-│   └── js/
+├── img/                    # 截图目录
+├── docs/                   # 文档目录
 ├── demo.php                # 演示首页
 ├── forum.php               # 论坛页面
+├── payload_library.php     # Payload库页面
+├── payload_library.js      # Payload库脚本
+├── payloads.json           # Payload数据
+├── defense_demo.php        # 防御演示页面
+├── test_payload.html       # Payload测试页面
+├── simple_test.html        # 简化测试页面
 ├── steal.php               # 凭据接收脚本
 ├── steal_cookie.php        # Cookie接收脚本
 ├── view_credentials.php    # 凭据查看页面
 ├── view_cookies.php        # Cookie查看页面
 ├── clear_credentials.php   # 清空凭据脚本
 ├── clear_cookies.php       # 清空Cookie脚本
+├── clear_forum_comments.php # 清空评论脚本
+├── config.example.php      # 配置示例
 ├── README.md               # 项目说明
-├── QUICKSTART.md           # 快速启动指南
-├── CONTRIBUTING.md         # 贡献指南
-├── SECURITY.md             # 安全政策
-├── CHANGELOG.md            # 更新日志
 ├── LICENSE                 # 许可证
-├── .gitignore              # Git忽略文件
-└── project.json            # 项目配置
+├── AUTHORS                 # 作者信息
+└── .gitignore              # Git忽略文件
 ```
 
 ## 🎨 编码规范

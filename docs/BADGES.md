@@ -1,10 +1,11 @@
 # 项目徽章
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![PHP Version](https://img.shields.io/badge/php-%3E%3D5.6-green.svg)
+![PHP Version](https://img.shields.io/badge/php-%3E%3D7.4-green.svg)
 ![Platform](https://img.shields.io/badge/platform-Web-lightgrey.svg)
 ![Status](https://img.shields.io/badge/status-Active-success.svg)
 ![Security](https://img.shields.io/badge/security-Educational-yellow.svg)
+![Payloads](https://img.shields.io/badge/payloads-235+-orange.svg)
 
 ## 徽章说明
 
@@ -18,17 +19,19 @@
 
 ## 统计信息
 
-- **文件数量**: 20+
-- **代码行数**: 2000+
-- **功能模块**: 6个
-- **演示场景**: 2个
+- **文件数量**: 30+
+- **代码行数**: 5000+
+- **功能模块**: 8个
+- **XSS Payload**: 235+个
+- **演示场景**: 4个
 
 ## 技术栈
 
-- **后端**: PHP 5.6+
-- **前端**: HTML5, CSS3, JavaScript
+- **后端**: PHP 7.4+
+- **前端**: HTML5, CSS3, JavaScript (ES6+)
 - **服务器**: Apache/Nginx
 - **编码**: UTF-8
+- **数据存储**: JSON文件
 
 ## 功能模块
 

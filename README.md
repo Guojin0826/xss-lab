@@ -1,8 +1,9 @@
 # XSS漏洞演示靶场 🎯
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![PHP](https://img.shields.io/badge/PHP-5.6%2B-purple.svg)](https://php.net)
+[![PHP](https://img.shields.io/badge/PHP-7.4%2B-purple.svg)](https://php.net)
 [![Security](https://img.shields.io/badge/purpose-educational-green.svg)](docs/SECURITY.md)
+[![Payloads](https://img.shields.io/badge/payloads-235+-orange.svg)](payload_library.php)
 
 > ⚠️ **警告**：本项目仅用于安全教学和研究目的，严禁用于非法用途！
 
@@ -29,8 +30,17 @@
 
 ![防御演示2](img/defense_demo2.png)
 
+#### XSS Payload库页面
+![Payload库页面1](img/payload_library1.png)
+
+![Payload库页面2](img/payload_library2.png)
+
+#### Payload测试页面
+![Payload测试页面](img/test_payload.png)
+
 ## ✨ 功能特性
 
+- 💣 **XSS Payload库** - 235+个常见XSS攻击向量，支持一键复制和测试
 - 🛡️ **XSS防御演示** - 学习如何正确防御XSS攻击
 - 🎣 **钓鱼攻击演示** - 窃取用户账号密码
 - 🍪 **Cookie窃取演示** - 窃取用户会话信息
@@ -43,7 +53,7 @@
 
 ### 环境要求
 
-- PHP 5.6 或更高版本
+- PHP 7.4 或更高版本
 - Apache/Nginx Web服务器
 - 现代浏览器（Chrome、Firefox、Edge等）
 
@@ -100,23 +110,28 @@ chmod 755 data/
 
 ```
 xss-lab/
-├── demo.php              # 演示入口页面
-├── forum.php             # 存在XSS漏洞的论坛
-├── view_credentials.php  # 查看窃取的凭据
-├── view_cookies.php      # 查看窃取的Cookie
-├── steal.php             # 接收凭据的脚本
-├── steal_cookie.php      # 接收Cookie的脚本
-├── clear_credentials.php # 清空凭据数据
-├── clear_cookies.php     # 清空Cookie数据
-├── config.example.php    # 配置示例文件
-├── phishing/             # 钓鱼页面目录
-│   └── login.html        # 伪造的登录页面
-├── data/                 # 数据存储目录
-└── docs/                 # 详细文档目录
-    ├── README.md         # 详细说明文档
-    ├── QUICKSTART.md     # 快速启动指南
-    ├── SECURITY.md       # 安全政策
-    └── ...               # 其他文档
+├── demo.php                 # 演示入口页面
+├── forum.php                # 存在XSS漏洞的论坛
+├── payload_library.php      # XSS Payload库
+├── payload_library.js       # Payload库外部脚本
+├── payloads.json            # Payload数据文件（235+条）
+├── defense_demo.php         # XSS防御演示
+├── view_credentials.php     # 查看窃取的凭据
+├── view_cookies.php         # 查看窃取的Cookie
+├── steal.php                # 接收凭据的脚本
+├── steal_cookie.php         # 接收Cookie的脚本
+├── clear_credentials.php    # 清空凭据数据
+├── clear_cookies.php        # 清空Cookie数据
+├── clear_forum_comments.php # 清空论坛评论
+├── config.example.php       # 配置示例文件
+├── test_payload.html        # Payload测试页面
+├── simple_test.html         # 简化测试页面
+├── phishing/                # 钓鱼页面目录
+│   └── login.html           # 伪造的登录页面
+├── data/                    # 数据存储目录
+├── assets/                  # 静态资源目录
+├── img/                     # 截图目录
+└── docs/                    # 详细文档目录
 ```
 
 ## 🔒 安全警告
@@ -133,6 +148,9 @@ xss-lab/
 - [完整使用指南](docs/README.md)
 - [快速启动](docs/QUICKSTART.md)
 - [项目结构说明](docs/STRUCTURE.md)
+- [XSS Payload库说明](docs/PAYLOAD_LIBRARY.md)
+- [XSS防御演示](docs/DEFENSE_DEMO.md)
+- [项目状态报告](docs/PROJECT_STATUS.md)
 - [安全政策](docs/SECURITY.md)
 - [贡献指南](docs/CONTRIBUTING.md)
 - [更新日志](docs/CHANGELOG.md)

@@ -26,20 +26,27 @@
 ### 🎯 功能文件
 - [ ] `demo.php` - 演示入口页面
 - [ ] `forum.php` - XSS漏洞论坛页面
+- [ ] `payload_library.php` - XSS Payload库页面
+- [ ] `payload_library.js` - Payload库外部脚本
+- [ ] `payloads.json` - Payload数据文件
+- [ ] `defense_demo.php` - XSS防御演示页面
+- [ ] `test_payload.html` - Payload测试页面
+- [ ] `simple_test.html` - 简化测试页面
 - [ ] `steal.php` - 凭据接收脚本
 - [ ] `steal_cookie.php` - Cookie接收脚本
 - [ ] `view_credentials.php` - 凭据查看页面
 - [ ] `view_cookies.php` - Cookie查看页面
 - [ ] `clear_credentials.php` - 清空凭据
 - [ ] `clear_cookies.php` - 清空Cookie
+- [ ] `clear_forum_comments.php` - 清空评论
 - [ ] `phishing/login.html` - 钓鱼登录页面
 
 ### 📁 目录结构
 - [ ] `data/` - 数据存储目录
 - [ ] `data/.gitkeep` - 保持目录结构
 - [ ] `assets/` - 静态资源目录
-- [ ] `assets/css/` - CSS样式目录
-- [ ] `assets/js/` - JavaScript目录
+- [ ] `img/` - 截图目录
+- [ ] `docs/` - 文档目录
 - [ ] `phishing/` - 钓鱼页面目录
 
 ### 🐙 GitHub配置
@@ -143,11 +150,16 @@
 ### ✅ 基础功能
 - [ ] `demo.php` 正常访问
 - [ ] `forum.php` 正常显示
+- [ ] `payload_library.php` 正常显示
+- [ ] `defense_demo.php` 正常显示
 - [ ] 评论提交功能正常
 - [ ] 评论删除功能正常
 - [ ] 搜索功能正常
 
 ### 🎣 XSS演示功能
+- [ ] Payload库加载正常
+- [ ] Payload一键复制功能正常
+- [ ] Payload测试功能正常
 - [ ] 钓鱼攻击Payload正常工作
 - [ ] Cookie窃取Payload正常工作
 - [ ] Payload注入按钮正常

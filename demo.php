@@ -274,6 +274,21 @@
                 <a href="phishing/login.html" class="btn-demo">查看钓鱼页面</a>
             </div>
 
+            <!-- XSS Payload库 -->
+            <div class="demo-card">
+                <div class="card-header">
+                    <span class="card-icon">💣</span>
+                    <span class="card-title">XSS Payload库</span>
+                </div>
+                <p class="card-desc">收集了常见的XSS攻击向量，包含多种分类和危害等级，支持一键复制和测试。</p>
+                <div class="card-features">
+                    <div class="feature-item">8大分类，80+Payload</div>
+                    <div class="feature-item">危害等级标注</div>
+                    <div class="feature-item">一键复制测试</div>
+                </div>
+                <a href="payload_library.php" class="btn-demo">查看Payload库</a>
+            </div>
+
             <!-- XSS防御演示 -->
             <div class="demo-card">
                 <div class="card-header">

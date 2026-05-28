@@ -6,6 +6,7 @@ xss-lab/
 ├── 📁 data/                          # 数据存储目录
 │   ├── 📄 stolen_credentials.txt      # 窃取的凭据数据
 │   ├── 📄 stolen_cookies.txt          # 窃取的Cookie数据
+│   ├── 📄 forum_comments.txt          # 论坛评论数据
 │   └── 📄 .gitkeep                    # 保持目录结构
 │
 ├── 📁 phishing/                       # 钓鱼攻击模块
@@ -17,8 +18,18 @@ xss-lab/
 │   └── 📁 js/                         # 脚本文件
 │       └── 📄 .gitkeep
 │
+├── 📁 img/                            # 截图目录
+│
+└── 📄 .gitkeep
+│
 ├── 📄 demo.php                        # 🏠 演示首页
 ├── 📄 forum.php                       # 💬 论坛页面（XSS漏洞场景）
+├── 📄 payload_library.php             # 💣 XSS Payload库
+├── 📄 payload_library.js              # 📜 Payload库外部脚本
+├── 📄 payloads.json                   # 📋 Payload数据（235+条）
+├── 📄 defense_demo.php                # 🛡️ XSS防御演示
+├── 📄 test_payload.html               # 🧪 Payload测试页面
+├── 📄 simple_test.html                # ⚡ 简化测试页面
 │
 ├── 📄 steal.php                       # 🔓 接收窃取的凭据
 ├── 📄 steal_cookie.php                # 🔓 接收窃取的Cookie
@@ -28,35 +39,29 @@ xss-lab/
 │
 ├── 📄 clear_credentials.php           # 🗑️ 清空凭据数据
 ├── 📄 clear_cookies.php               # 🗑️ 清空Cookie数据
+├── 📄 clear_forum_comments.php        # 🗑️ 清空论坛评论
 │
 ├── 📄 config.example.php              # ⚙️ 配置文件示例
-├── 📄 project.json                    # 📋 项目配置信息
 │
 ├── 📄 README.md                       # 📖 项目说明文档
-├── 📄 QUICKSTART.md                   # 🚀 快速启动指南
-├── 📄 CHANGELOG.md                    # 📝 更新日志
-├── 📄 CODE_STYLE.md                   # 🎨 代码规范
-├── 📄 BADGES.md                       # 🏷️ 项目徽章
-│
-├── 📄 CONTRIBUTING.md                 # 🤝 贡献指南
-├── 📄 SECURITY.md                     # 🔒 安全政策
 ├── 📄 LICENSE                         # 📜 MIT许可证
+├── 📄 AUTHORS                         # 👥 作者信息
 ├── 📄 .gitignore                      # 🚫 Git忽略文件
 │
-└── 📁 .feisuan/                       # IDE配置目录
-    └── 📁 rules/
-        └── 📄 project_rule.md
+└── 📁 docs/                           # 📚 详细文档目录
 ```
 
 ## 📊 文件统计
 
 | 类型 | 数量 | 说明 |
 |------|------|------|
-| PHP文件 | 8个 | 核心功能实现 |
-| HTML文件 | 1个 | 钓鱼页面 |
-| Markdown文件 | 8个 | 文档说明 |
+| PHP文件 | 11个 | 核心功能实现 |
+| HTML文件 | 3个 | 测试页面和钓鱼页面 |
+| JavaScript文件 | 1个 | Payload库脚本 |
+| JSON文件 | 1个 | Payload数据 |
+| Markdown文件 | 20+个 | 文档说明 |
 | 配置文件 | 3个 | 项目配置 |
-| **总计** | **20+** | 完整项目 |
+| **总计** | **40+** | 完整项目 |
 
 ## 🎯 核心文件说明
 
@@ -66,6 +71,9 @@ xss-lab/
 |------|------|--------|
 | `demo.php` | 演示首页，项目导航 | ⭐⭐⭐⭐⭐ |
 | `forum.php` | XSS漏洞演示场景 | ⭐⭐⭐⭐⭐ |
+| `payload_library.php` | XSS Payload库 | ⭐⭐⭐⭐⭐ |
+| `payloads.json` | Payload数据存储 | ⭐⭐⭐⭐⭐ |
+| `defense_demo.php` | XSS防御演示 | ⭐⭐⭐⭐ |
 | `phishing/login.html` | 钓鱼登录页面 | ⭐⭐⭐⭐ |
 | `steal.php` | 凭据接收脚本 | ⭐⭐⭐⭐ |
 | `steal_cookie.php` | Cookie接收脚本 | ⭐⭐⭐⭐ |
