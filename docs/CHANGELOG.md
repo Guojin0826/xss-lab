@@ -5,6 +5,38 @@
 格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 并且本项目遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.5.0] - 2026-05-29
+
+### 新增
+- ✨ 远程JS引入攻击演示
+  - 6种Payload实现方式（直接引入、动态创建、JSONP、Data URI、协议处理、jQuery）
+  - 远程控制能力演示
+  - 攻击流程图和Payload解析
+- ✨ 键盘记录攻击演示（keylogger_demo.php）
+  - 实时记录键盘输入
+  - 特殊按键标记
+  - 数据发送到服务器
+- ✨ XSS类型演示入门模块（xss_types_demo.php）
+  - 反射型XSS演示
+  - 存储型XSS演示
+  - DOM型XSS演示
+  - 详细原理说明
+- ✨ 整合数据查看器（viewer.php）
+  - 凭据、Cookie、键盘记录三合一
+  - 统一的UI界面
+  - 一键清理所有数据功能
+
+### 修复
+- 🐛 修复Cookie清空报错问题
+- 🐛 修复Payload复制功能截断问题
+- 🐛 修复键盘记录数据文件路径不一致问题
+- 🐛 修复save_keylog.php只支持POST不支持GET的问题
+
+### 更新
+- 📝 更新所有文档，添加远程JS引入说明
+- 🎨 优化演示入口页面UI
+- 🎨 添加攻击流程图
+
 ## [1.2.0] - 2026-05-28
 
 ### 新增

